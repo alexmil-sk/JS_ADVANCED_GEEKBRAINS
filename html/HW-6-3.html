@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>HW-6-3</title>
+	<style>
+		.back-home {
+		width: 88px;
+		height: 28px;
+		display: block;
+		float: left;
+		margin: 20px;
+		padding: 15px;
+		font-size: 25px;
+		color: white;
+		border-radius: 20px;
+		background-color: #A52A2A;
+		box-shadow: 3px 3px 10px brown;
+		text-align: center;
+		text-decoration: none;
+		}
+
+		.back-home:hover {
+			background-color: #cc3636;
+			color: white;
+			box-shadow: 3px 3px 10px crimson;
+		}
+
+		.back-home:active {
+			background-color: #e18787;
+			color: white;
+			box-shadow: 0 0 20px #6e0f22;
+		}
+		/* Слайдер: */
+		.slider{
+			width: 1000px;
+			height: 600px;
+			margin: 100px auto;
+		}
+		.item img {
+			object-fit: cover;
+			width: 100%;
+			height: 600px;
+		}
+		.previous, .next {
+			margin: 0 10px;
+			
+		}
+		.previous:hover,
+		.next:hover {
+			cursor: pointer;
+			background-color: rgba(0, 0, 0, 0.2);
+		}
+		.buttons {
+			display:flex;
+			justify-content: center;
+		}
+	</style>
+</head>
+<body>
+	<a class="back-home" href="../html/HW-6.html">to HW-6</a>
+	<div class = 'slider'>
+		<div class="item">
+			<img class='img0' src="../img/HW-6/HW-6-3/0.jpg">
+		</div>
+			
+		<div class="item">
+			<img class='img1' src="../img/HW-6/HW-6-3/1.jpg">
+		</div>
+
+		<div class="item">
+			<img class='img2' src="../img/HW-6/HW-6-3/2.jpg">
+		</div>
+	</div>
+	<div class="buttons">
+		<input type="button" value="Назад" class="previous" onclick="previousSlide()">
+		<input type="button" value="Вперед" class="next" onclick="nextSlide()">
+	</div>
+
+
+	<script>
+			var forward = document.querySelector('.buttons .next');
+			var backward = document.querySelector('.buttons .previous');
+
+			var fotos = document.querySelectorAll('.slider .item img');
+			
+			var imgNum = 0;
+
+			function current(i) {
+					showImg(imgNum = i);
+				}
+
+			function showImg(i) {
+					var items = document.getElementsByClassName("item");
+				if (i >= items.length) {
+					imgNum = 1;
+				}
+				if (i < 2) {
+					imgNum = items.length - 1;
+				}
+
+				for (var item of items) {
+					item.style.display = "none";
+				}
+				items[imgNum -1].style.display = "block";
+				}
+			showImg(imgNum);
+
+			forward.onclick = function () {
+				showImg(imgNum++);
+			}
+
+			backward.onclick = function() {
+				showImg(imgNum--);
+			}
+	</script>
+</body>
+</html>

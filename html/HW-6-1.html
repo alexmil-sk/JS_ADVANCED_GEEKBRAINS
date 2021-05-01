@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>HW-6-1</title>
+	<style>
+		#img {
+			margin-top: 50px;
+			display: flex;
+			justify-content: space-evenly;
+		}
+
+		#img img {
+			border: 1px solid #000;
+			cursor: pointer;
+		}
+
+		body {
+			text-align: center;
+		}
+
+		body > img {
+			width: 30%;
+			border: 3px solid #000;
+			margin-top: 100px;
+			margin-right:10px;
+		}
+
+		#out {
+			font-size: 30px;
+			color: red;
+		}
+
+		.back-home {
+		width: 88px;
+		height: 28px;
+		display: block;
+		float: left;
+		margin: 20px;
+		padding: 15px;
+		font-size: 25px;
+		color: white;
+		border-radius: 20px;
+		background-color: #A52A2A;
+		box-shadow: 3px 3px 10px brown;
+		text-align: center;
+		text-decoration: none;
+		}
+
+		.back-home:hover {
+			background-color: #cc3636;
+			color: white;
+			box-shadow: 3px 3px 10px crimson;
+		}
+
+		.back-home:active {
+			background-color: #e18787;
+			color: white;
+			box-shadow: 0 0 20px #6e0f22;
+		}
+	</style>
+</head>
+<body>
+		<a class="back-home" href="../html/HW-6.html">to HW-6</a>
+		<div id='img'>
+			<img src='../img/HW-6/HW-6-1/small/auto0.jpg'>
+			<img src='../img/HW-6/HW-6-1/small/auto1.jpg'>
+			<img src='../img/HW-6/HW-6-1/small/auto2.jpg'>
+			<img src='../img/HW-6/HW-6-1/small/auto3.jpg'>
+		</div>
+		<p id = 'out'></p>
+		<div>
+			<img id = 'imgBig' src="">
+		</div>
+	
+	<script>
+			var arrayAuto = document.querySelectorAll('img');
+			for (var i = 0; i < arrayAuto.length; i++) {
+				arrayAuto[i].onclick = function (e) {
+					var bigImage = document.getElementById('imgBig');
+					bigImage.src = e.target.src.replace('small', 'big');
+					bigImage.onerror = function () {
+						document.querySelector('#out').innerHTML = 'Ошибка! Изображение отсутствует!';
+						alert('Ошибка! Изображение отсутствует!');
+					}
+				}
+			}
+	</script>
+</body>
+</html>

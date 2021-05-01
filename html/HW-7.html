@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Подключение файла JS скриптов -->
+	<script defer src="../js/script.js"></script>
+	<!-- Подключение jQuery -->
+	<script defer src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<title>Домашнее задание №7</title>
+	<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+	<div class="wrapper">
+		<div class="container">
+			<a href="../index.html" class="btn-home"><img src="../img/home.svg" alt=""></a>
+			<h1 class="h1-HW">Домашнее задание №7</h1>
+			<section сlass="section-HW">
+					<article class="article-HW">
+						<p>1. Выводить счёт в режиме реального времени.</p>
+						<p>2. Генерировать временные препятствия на поле.</p>
+						<p>3. *Убрать границы поля, т.е. при пересечении границы поля змейка появляется с противоположной стороны.</p>
+					</article>
+			</section>
+			<h1 class="h1-HW">Решение</h1>
+			<!-- ! ЗАДАЧА №1 -->
+			<article class="article-HW">
+				<p class="bold">1. Выводить счёт в режиме реального времени.</p>			
+				<p>Пояснения</p>
+				<p> 1. В верстке HTML создаем заголовок над таблицей : "h3 class="score-string">Вывод текущего счета/h3"<br>
+						2. Создаем глобальную переменную: var currentScore.<br>
+						3. В функции function prepareGameField() обращаемся к созданному тэгу и присваиваем ему класс:<br>
+							currentScore = document.querySelector('h3');<br>
+							currentScore.classList.add('score-string');<br>
+						4. В функции "function haveFood(unit)" создаем строку: "currentScore.innerHTML = 'Ваш текущий счет: ' + score;"<br>
+				</p>
+				<button type="button" onclick="window.location.href= 'HW-7-1.html'" class="answerBtn">ПЕРЕЙТИ</button>
+				<p></p>
+			</article>
+			<!-- ! ЗАДАЧА №2 -->
+			<article class="article-HW">
+				<p class="bold">2. Генерировать временные препятствия на поле.</p>
+				<p>Пояснения</p>
+				<p>1. Создаем css-свойство для класса препятствий: "obstacle-unit".<br>
+					2. Cоздаем функцию "createObstacles()" для формирования ячеек-препятствий и присвоения им класса css-свойств.<br>
+					3. Создаем функцию "haveObstacle(obst)" для контроля прохождения через препятствие.<br>
+					4. В функции "startGame()" создаем интервал запуска функции createObstacles() создания препятствий:<br>
+					"setTimeout(createObstacles, 7000);".<br>
+					5. В функции "move()" в строку проверки добавляем проверку на препятствие:<br>
+					"if (!isSnakeUnit(new_unit) && new_unit !== undefined && !haveObstacle(new_unit)) {}".
+				</p>
+				<button type="button" onclick="window.location.href='HW-7-2.html'" class="answerBtn">ПЕРЕЙТИ</button>
+				<p></p>
+			</article>
+			<!-- ! ЗАДАЧА №3 -->
+			<article class="article-HW">
+				<p class="bold">3. *Убрать границы поля, т.е. при пересечении границы поля змейка появляется с противоположной стороны.</p>
+				<p>Пояснения</p>
+				<p>В функции "move()" указываем дополнительные условия для ячеек типа "undefined" и для координат по направлениям движения змейки.</p>
+				<button type="button" onclick="window.location.href='HW-7-3.html'" class="answerBtn">ПЕРЕЙТИ</button>
+				<p></p>
+			</article>
+		</div>
+	</div>
+</body>
+</html>

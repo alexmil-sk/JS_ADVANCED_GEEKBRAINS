@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Подключение файла JS скриптов -->
+	<script defer src="../js/script.js"></script>
+	<!-- Подключение jQuery -->
+	<script defer src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<title>Домашнее задание №3</title>
+	<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+	<div class="wrapper">
+		<div class="container">
+			<a href="../index.html" class="btn-home"><img src="../img/home.svg" alt=""></a>
+			<h1 class="h1-HW">Домашнее задание №3</h1>
+			<section сlass="section-HW">
+					<article class="article-HW">
+						<p>1. С помощью цикла while вывести все простые числа в промежутке от 0 до 100.</p>
+						<p>2. С этого урока начинаем работать с функционалом интернет-магазина.<br>
+							Предположим, есть сущность корзины.<br>
+							Нужно реализовать функционал подсчета стоимости корзины в зависимости от находящихся в ней товаров.</p>
+						<p>3. Товары в корзине хранятся в массиве.<br>
+							Задачи:<br>
+							a) Организовать такой массив для хранения товаров в корзине;<br>
+							b) Организовать функцию countBasketPrice, которая будет считать стоимость корзины.</p>
+						<p>4.*Вывести с помощью цикла for числа от 0 до 9, не используя тело цикла.<br>
+							Выглядеть это должно так:<br>
+							for(…){// здесь пусто}</p>
+						
+						<p>5. *Нарисовать пирамиду с помощью console.log, как показано на рисунке,
+							только у вашей пирамиды должно быть 20 рядов, а не 5:<br>
+							x<br>
+							xx<br>
+							xxx<br>
+							xxxx<br>
+							xxxxx</p>
+					</article>
+			</section>
+			<h1 class="h1-HW">Решение</h1>
+			<!-- ! ЗАДАЧА №1 -->
+			<article class="article-HW">
+				<p class="bold">1. С помощью цикла while вывести все простые числа в промежутке от 0 до 100.
+				</p>
+				<script>
+					function primeNumbers() {
+						var setOfNumbers = +prompt('Введите конечное значение числового ряда от 2 до 100 для вывода простых чисел');
+						while(setOfNumbers <= 1) {
+							alert('Конечное значение числового ряда не может быть меньше, чем 2');
+							setOfNumbers = +prompt('Введите конечное значение числового ряда от 2 до 100 для вывода простых чисел');
+						}
+
+						var i = 2;
+						var primeArr = [];
+						while (i <= setOfNumbers) {
+							if (i == 2 || i == 3 || i == 5 || i == 7) {
+								primeArr.push(" " + i);
+								i++
+								continue;
+							} else if (i % 2 == 0 || i % 3 == 0 || i % 5 == 0 || i % 7 == 0) {
+								i++;
+								continue;
+							}
+							primeArr.push(" " + i++);
+						}
+						document.getElementById('question-1').innerHTML = primeArr;
+					}
+
+				</script>
+				<button type="button" onclick="primeNumbers()" class="answerBtn">Запуск скрипта</button>
+				<p id="question-1" class="answer"></p>
+				<p>Пояснения:</p>
+				<p>function primeNumbers() {<br>
+				
+				var setOfNumbers = +prompt('Введите конечное значение числового ряда от 2 до 100 для вывода простых чисел');<br>
+				
+				var i = 2;<br>
+				var primeArr = [ ];<br>
+				while (i <= setOfNumbers)<br>
+				{ if (i==2 || i==3 || i==5 || i==7) {<br>
+					primeArr.push(" " + i);<br>
+				i++<br>
+				continue;<br>
+				} else if (i % 2 == 0 || i % 3 == 0 || i % 5 == 0 || i % 7 == 0) {<br>
+				i++;<br>
+				continue;<br>
+				}<br>
+				primeArr.push(" " + i++);<br>
+				}<br>
+				document.getElementById('question-1').innerHTML = (primeArr);<br>
+				}</p>
+			</article>
+			<!-- ! ЗАДАЧА №2 -->
+			<!-- ! ЗАДАЧА №3 -->
+			<article class="article-HW">
+				<p class="bold">2. С этого урока начинаем работать с функционалом интернет-магазина.<br>
+					Предположим, есть сущность корзины.<br>
+					Нужно реализовать функционал подсчета стоимости корзины в зависимости от находящихся в ней товаров.</p>
+				<p class="bold">3. Товары в корзине хранятся в массиве.<br>
+				Задачи:<br>
+				a) Организовать такой массив для хранения товаров в корзине;<br>
+				b) Организовать функцию countBasketPrice, которая будет считать стоимость корзины.</p>
+				<script>
+				
+				function countBasketPrice() {
+					var basket = [
+						{
+							title: 'Товар-1',
+							price: 100,
+							count: 3
+						},
+						{
+							title: 'Товар-2',
+							price: 200,
+							count: 5
+						},
+						{
+							title: 'Товар-3',
+							price: 300,
+							count: 1
+						},
+					];
+					var sum = 0;
+					var quantity = 0;
+					var name = 'В корзине находится товар следующих наименований: ';
+					for (var item of basket) {
+						sum += (item.price * item.count);
+						quantity += item.count;
+						name += '(' + item.title + ') ';
+
+					}
+					var q = basket.length;
+					document.getElementById('question-2-3').innerHTML = 'Всего товаров в корзине: ' + q + '.<br>' + name + '.<br>Общее количество выбранных позиций товаров составляет, шт.: ' + quantity + '.<br>Стоимость всех выбранных товаров в корзине составляет, руб.: ' + sum + '.';
+				}
+				</script>
+				<button type="button" onclick="countBasketPrice()" class="answerBtn">Запуск скрипта</button>
+				<p id="question-2-3" class="answer"></p>
+				<p>Пояснения:</p>
+				<p>function countBasketPrice() {<br>
+				var basket = [<br>
+				{<br>
+				title: 'Товар-1',<br>
+				price: 100,<br>
+				count: 3<br>
+				},<br>
+				{<br>
+				title: 'Товар-2',<br>
+				price: 200,<br>
+				count: 5<br>
+				},<br>
+				{<br>
+				title: 'Товар-3',<br>
+				price: 300,<br>
+				count: 1<br>
+				},<br>
+				];<br>
+				<br>
+				var sum = 0;<br>
+				var quantity = 0;<br>
+				var name = 'В корзине находится товар следующих наименований: ';<br>
+				for (var item of basket) {<br>
+				sum += (item.price * item.count);<br>
+				quantity += item.count;<br>
+				name += '(' + item.title + ') ';<br>
+				}<br>
+				var q = basket.length;<br>
+				document.getElementById('question-2-3').innerHTML = 'Всего товаров в корзине: ' + q + '.' + name + '.' + <br>'Общее
+				количество выбранных позиций товаров составляет, шт.: ' + quantity + '.' + <br>'Стоимость всех выбранных товаров в корзине
+				составляет, руб.: ' + sum + '.';<br>
+				}</p>
+			</article>
+			<!-- ! ЗАДАЧА №4 -->
+			<article class="article-HW">
+				<p class="bold">4.*Вывести с помощью цикла for числа от 0 до 9, не используя тело цикла.<br>
+				Выглядеть это должно так:<br>
+				for(…){// здесь пусто}</p>
+					<script>
+						function withoutBody() {
+							var arr = [];
+							for (var i = 0; i <= 9; arr.push(i++ + ' ')) {}
+							document.getElementById('question-4').innerHTML = arr;
+						}
+					</script>
+					<button type="button" onclick="withoutBody()" class="answerBtn">Запуск скрипта</button>
+					<p id="question-4" class="answer"></p>
+					<p>Пояснения:</p>
+					<p>function withoutBody() {<br>
+						var arr = [ ];<br>
+						for (var i = 0; i <= 9; arr.push(i++)) { }<br>
+						document.write(arr);<br>
+						}</p>
+			</article>
+			<!-- ! ЗАДАЧА №5 -->
+			<article class="article-HW">
+				<p class="bold">5. *Нарисовать пирамиду с помощью console.log, как показано на рисунке,
+				только у вашей пирамиды должно быть 20 рядов, а не 5:<br>
+				x<br>
+				xx<br>
+				xxx<br>
+				xxxx<br>
+				xxxxx</p>
+				
+				<script>
+					function x(){
+						var i = 1
+						var x = '';
+						while (i <= 20) {
+							i++;
+							console.log(x += 'x');
+						}
+						document.getElementById('question-5').innerHTML = 'После запуска скрипта проверьте "пирамиду" CONSOLE.LOG';
+					}
+				</script>
+				<button type="button" onclick="x()" class="answerBtn">Запуск скрипта</button>
+				<p id="question-5" class="answer"></p>
+				<p>Пояснения:</p>
+				<p>var i = 1<br>
+					var x = " ";<br>
+					while (i <= 20) {<br>
+					i++;<br>
+					console.log(x +='x' );<br>
+					}</p>
+			</article>
+		</div>
+	</div>
+</body>
+</html>
