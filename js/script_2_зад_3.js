@@ -1,106 +1,13 @@
 ' use strict';
 
-//??<ЗАДАНИЕ №2>==================================================================================================
-
-class ProductList {
-
-	constructor(container = '.products') {
-		this.container = container;
-		this.goods = []; //список товаров
-		this.allProducts = []; //каталог эксземпляров классов товаров - актуальное состояние текущего списка товаров
-		this.fetchGoods();
-		this.render();
-		this.createTotal();
-		this.sumTotal();
-	}
-	//метод, который обращался бы к серверу и получал данные
-	fetchGoods() {
-		this.goods = [{
-				id: 1,
-				title: 'Котенок',
-				foto: '../img/HW-1/kitty.jpg',
-				price: 200,
-			},
-			{
-				id: 2,
-				title: 'Леопард',
-				foto: '../img/HW-1/leopard.jpg',
-				price: 100,
-			},
-			{
-				id: 3,
-				title: 'Совенок',
-				foto: '../img/HW-1/owl.jpg',
-				price: 250,
-			},
-			{
-				id: 4,
-				title: 'Поросенок',
-				foto: '../img/HW-1/piggy.jpg',
-				price: 150,
-			},
-			{
-				id: 5,
-				title: 'Щенок',
-				foto: '../img/HW-1/puppy.jpg',
-				price: 350,
-			},
-		];
-	}
-
-	//метод для перебора массива товаров и возвращения кусочка разметки для каждого товара
-	render() {
-		const block = document.querySelector(this.container);
-		for (let item of this.goods) {
-			const prodCard = new ProductItem(item);
-
-			this.allProducts.push(prodCard);
-			block.insertAdjacentHTML('beforeend', prodCard.render());
-		}
-	}
-
-	createTotal() {
-		const h2Total = document.createElement('h2');
-		h2Total.classList.add('total');
-		const flexRow = document.querySelector('.flex__row');
-		flexRow.append(h2Total);
-		h2Total.innerHTML = 'ИТОГО, общая стоимость игрушек, составляет: ';
-	}
-
-	sumTotal() {
-		const sumT = document.querySelector('.total');
-		let sum = 0;
-		for (let item of this.goods) {
-			sum += item.price;
-		}
-		sumT.insertAdjacentHTML('beforeend', `${sum} \u20bd`);
-	}
-
-}
-class ProductItem {
-	constructor(product, foto = '../img/HW-1/blind.jpg') {
-		this.title = product.title;
-		this.price = product.price;
-		this.id = product.id;
-		this.foto = product.foto;
-	}
-	render() {
-		return `<div class = "product-item" data-id = "${this.id}">
-						<h3>${this.title}</h3>
-						<img src = "${this.foto}" alt = "img ${this.id}">
-						<p>${this.price} \u20bd</p>
-						<button class = "buy-btn">Добавить</button>
-				</div>`;
-	}
-}
-
-const catalog = new ProductList();
+//??<ЗАДАНИЕ №2>==========================================
 
 
-//??</ЗАДАНИЕ №2>===================================================================================
+
+//??</ЗАДАНИЕ №3>==========================================
 
 
-//??<ЗАДАНИЕ №3>=====================================================================================
+//??<ЗАДАНИЕ №3>==========================================
 
 const size = [
 	{
@@ -145,6 +52,9 @@ const toppings = [
 		price: 20
 	},
 ];
+
+const arrayTotal = [...size, ...stuffs, ...toppings];
+//console.log(arrayTotal);
 
 class MenuCard {
 	constructor(src, title, descr, alt, cal, price, parentSelector, stuff, topping) {
@@ -231,11 +141,15 @@ radios.forEach(item => {
 		totalCal.innerHTML = ' ';
 
 		let inputRadios = document.querySelectorAll('input[type="radio"]:checked');
+		let sum = 0;
+
 		inputRadios.forEach(item => {
 			totalStructure.insertAdjacentHTML('beforeend', ` ${item.id};<br>`);
 			totalPrice.insertAdjacentHTML('beforeend', ` ${item.id} - ${item.dataset.price} \u20bd;<br>`);
 			totalCal.insertAdjacentHTML('beforeend', ` ${item.id} - ${item.dataset.calories} калорий;<br>`);
+			sum += item.dataset.price;
 		});
+		console.log(+sum);
 	});
 });
 

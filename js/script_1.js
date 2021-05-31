@@ -52,8 +52,8 @@ const renderProduct = ((title, foto, price) =>
 				`<div class = "product-item">
 				<h3>${title}</h3>
 				<img src = ${foto}></img>
-				<p>${price}</p>
-				<button class = "by-btn">Добавить</button>
+				<p>${price} \u20bd</p>
+				<button class = "buy-btn">Добавить</button>
 				</div>`
 );
 

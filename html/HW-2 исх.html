@@ -32,12 +32,6 @@
 			margin-top: 30px;
 			margin-bottom: 10px
 		}
-		.boldBlack {
-			color:#000;
-			font-weight: 700;
-			margin-top: 10px;
-			margin-bottom: 20px
-		}
 		.center {
 			text-align: center;
 		}
@@ -53,7 +47,9 @@
 			border: 3px solid black;
 			padding: 10px;
 			margin-top: 20px;
-			margin-bottom: 20px;
+			margin-bottom: 50px;
+	
+	
 		}
 		.product-item {
 			width: 20%;
@@ -92,24 +88,10 @@
 			font-size: 30px;
 			font-weight: 700;
 			color: #000;
-			margin-bottom: 40px;
 		}
-		.hamburger__row {
-			display:flex;
-			margin: 0 auto;
-			justify-content: space-around;
-		}
-
 		.hamburger {
-			width: auto;
-			margin: 10px;
-			box-shadow: 0px 0px 20px 2px #000;
-			padding: 20px;
-		}
-		.hamburger img {
 			text-align: center;
 		}
-
 				/*Форма составления гамбургера*/
 		.picture {
 			position:relative;
@@ -142,8 +124,8 @@
 
 		select {
 			background-color: #fff;
-			font-size: 18px;
-			width: 260px;
+			font-size: 20px;
+			width: 200px;
 		}
 
 		select:focus{
@@ -154,10 +136,8 @@
 		input[type=submit] {
 			color: white;
 			background: #014A97;
-			height: 2.5em;
-			width: 130px;
-			font-size: 20px;
-			border-radius: 10px;
+			height: 2em;
+			width: 100px;
 		}
 
 		input[type=submit]:hover {
@@ -165,7 +145,6 @@
 			background-color: blue;
 			color: white;
 			cursor: pointer;
-			
 
 		}
 
@@ -178,10 +157,8 @@
 		input[type=reset] {
 			color: white;
 			background: red;
-			height: 2.5em;
-			width: 130px;
-			font-size: 20px;
-			border-radius: 10px;
+			height: 2em;
+			width: 100px;
 		}
 
 		input[type=reset]:hover {
@@ -194,9 +171,7 @@
 			background: red;
 			border: 1px solid brown;
 		}
-		.red {
-			color: red;
-		}
+
 		</style>
 
 
@@ -232,7 +207,10 @@
 				<p class="bold">1. Добавьте пустые классы для корзины товаров и элемента корзины товаров.<br>
 				Продумайте, какие методы понадобятся для
 				работы с этими сущностями.</p>
-				<p>Пояснения:</p>
+				<p>Пояснения:
+
+					<p>сделать то же самое что мы сделали для каталога товара , для корзины. Какие свойства и методы необходимо добавить</p>
+				</p>
 			</article>
 			<!-- ! ЗАДАЧА №2 -->
 			<article class="article-HW">
@@ -256,13 +234,7 @@
 				}<br>
 				sumT.insertAdjacentHTML('beforeend', `${sum} \u20bd`);<br>
 				}</p>
-				<p><strong>Визуальное представление итоговой строки с указанием суммы товаров, а также карточки товаров, созданные с учетом изменения кода на основании Урока №2, добавлено ниже.</strong></p>
-			</article>
-			<article>
-				<div class="flex__row">
-					<h1>Каталог мягких игрушек выполнен с использованием кода Урока №2</h1>
-					<div class="products"></div>
-				</div>
+				<p>Визуальное представление итоговой строки с указанием суммы товаров, а также карточки товаров, созданные с учетом изменения кода на основании Урока №2, добавлено внизу страницы.</p>
 			</article>
 			<!-- ! ЗАДАЧА №3 -->
 			<article class="article-HW">
@@ -278,48 +250,16 @@
 				<p class="bold">Напишите программу, рассчитывающую стоимость и калорийность
 					гамбургера.</p>
 				<p class="bold">Можно использовать примерную архитектуру класса из методички, но можно использовать и свою.</p>
-				
-				<!--Форма приготовления гамбургера начало-->
-						<form action="#">
-							<div class="picture userForm">
-								<fieldset class="userForm">
-									<legend><h1 class="h1-HW">ФОРМА ПРИГОТОВЛЕНИЯ ГАМБУРГЕРА</h1></legend>
-						
-									<div class="hamburger__row"></div>
-									<br>
-									<div>
-									<h2>ИТОГОВЫЙ СОСТАВ БУТЕРБРОДА:</h2>
-									<p  class="structure"></p>
-									<p class="structure0"></p>
-									<p class="structure1"></p>
-									</div>
-									<br>
-									
-									<div>
-									<h2>ОБЩАЯ КАЛОРИЙНОСТЬ БУТЕРБРОДА:</h2>
-									<p  class="total__cal"></p>
-									<p class="total__cal0"></p>
-									<p class="total__cal1"></p>
-									</div>
-									<br>
-									<div >
-										<h2>ОБЩАЯ СТОИМОСТЬ БУТЕРБРОДА:</h2>
-										<p class="total__price"></p>
-										<p class="total__price0"></p>
-										<p class="total__price1"></p>
-									</div>
-									<br>
-									
-									<p class="center">
-										<input id="submit" type="submit" value="Рассчитать">&nbsp;
-										<input id="reset" type="reset" value="Очистить">
-									</p>
-									
-								</fieldset>
-							</div>
-						</form>
-					</div>
-				<!--Форма приготовления гамбургера конец-->
+				<p>Пояснения:</p>
+					<p>Сделать не через консоль, а через обычный HTML. Сверстать интерфейс из чекбоксов, радиобатонов. Что касается приправ зашить их в data антрибуты, чтобы потом считывать из чекбоксов и радиобаттонов.</p>
+				<div class="cook"></div>
+			</article>
+			<article>
+				<div class="flex__row">
+					<h1>Каталог мягких игрушек выполнен с использованием кода Урока №2</h1>
+					<div class="products"></div>
+				</div>
+			</article>
 		</div>
 	</div>
 </body>
