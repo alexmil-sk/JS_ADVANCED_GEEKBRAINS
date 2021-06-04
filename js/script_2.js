@@ -6,14 +6,14 @@ class ProductList {
 
 	constructor(container = '.products') {
 		this.container = container;
-		this.goods = []; //список товаров
-		this.allProducts = []; //каталог эксземпляров классов товаров - актуальное состояние текущего списка товаров
+		this.goods = []; //!!список товаров
+		this.allProducts = []; //!!каталог эксземпляров классов товаров - актуальное состояние текущего списка товаров
 		this.fetchGoods();
 		this.render();
 		this.createTotal();
 		this.sumTotal();
 	}
-	//метод, который обращался бы к серверу и получал данные
+	//!!метод, который обращался бы к серверу и получал данные
 	fetchGoods() {
 		this.goods = [{
 				id: 1,
@@ -48,7 +48,7 @@ class ProductList {
 		];
 	}
 
-	//метод для перебора массива товаров и возвращения кусочка разметки для каждого товара
+	//!!метод для перебора массива товаров и возвращения кусочка разметки для каждого товара
 	render() {
 		const block = document.querySelector(this.container);
 		for (let item of this.goods) {
@@ -64,7 +64,7 @@ class ProductList {
 		h2Total.classList.add('total');
 		const flexRow = document.querySelector('.flex__row');
 		flexRow.append(h2Total);
-		h2Total.innerHTML = 'ИТОГО, общая стоимость игрушек, составляет: ';
+		h2Total.innerHTML = 'ИТОГО, общая стоимость игрушек составляет: ';
 	}
 
 	sumTotal() {

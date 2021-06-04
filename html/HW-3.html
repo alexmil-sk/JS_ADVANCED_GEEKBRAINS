@@ -11,9 +11,149 @@
 	<title>Домашнее задание №3</title>
 	<link rel="stylesheet" href="../css/style.css">
 	<style>
-		
-		</style>
+		h1 {
+			font-size: 26px;
+			text-align: center;
+			color: #000;
+		}
+		h2 {
+			font-size: 18px;
+			text-align: left;
+			color: #000;
+		}
+		h3 {
+			font-size: 18px;
+			text-align: center;
+			color: #000;
+			margin: 10px 0 0 0;
+		}
+		.left {
+			text-align: left;
+			margin-top: 30px;
+			margin-bottom: 10px
+		}
+		.boldBlack {
+			color:#000;
+			font-weight: 700;
+			margin-top: 10px;
+			margin-bottom: 20px
+		}
+		.center {
+			text-align: center;
+		}
+		.basket_goods,
+		.products {
+			display: flex;
+			justify-content: right;
+			width: 100%;
+			min-height: 375px;
+			border: 3px solid black;
+			padding: 10px;
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+		.basket_goods{
+			min-height: 376px;
+		}
+		.product-item {
+			width: 20%;
+			min-height: 350px;
+			justify-self: center;
+			border: 2px solid gray;
+			margin-left: 10px;
+			text-align: center;
+			background-color: #FFFACD;
+		}
+		.product-item img{
+			width: 180px;
+			opacity: 0.8;
+			
+		}
+	
+		.product-item:first-child {
+			margin-left: 0px;
+		}
+		.flex__row {
+			display: flex;
+			flex-direction: column;
+		}
+		.flex__row img {
+			height: 200px;
+			margin: 20px;
+			border: 1px solid gray;
+		}
+	
+		.blind {
+			transform: scale(1.0);
+			margin-top: 50px !important;
+		}
+		.buy_btn__del,
+		.buy-btn {
+			width: auto;
+			height: 30px;
+			color: black;
+			padding: 0 10px;
+			margin-top: 5px;
+			border: 1px solid #000;
+			border-radius: 5px;
+		}
+		.buy-btn {
+			background-color: lightgreen;
+		}
+		.buy_btn__del {
+			background-color: lightcoral;
+		}
+		.total {
+			font-size: 30px;
+			font-weight: 700;
+			color: #000;
+			margin-bottom: 40px;
+		}
+		.basketDiv {
+			margin-bottom: 30px;
 
+		}
+		.product-item h1 {
+			padding-left: 30px;
+		}
+		.product-item p{
+			font-size: 25px;
+			padding-left: 30px;
+		}
+		
+		.basket {
+			width: 100%;
+			min-height: 350px;
+			margin-bottom: 20px;
+			background-color: #fff;
+			margin: 50px auto;
+			/*border: 1px solid #ccc;*/
+		}
+		span {
+			font-size: 25px;
+			text-align: left;
+			line-height: 2em;
+			margin-left:30px;
+			border-top: 1px solid #000;
+			font-weight: bold;
+		}
+		.buyBtn {
+			content: '';
+			width: 100px;
+			height: 40px;
+			font-size: 20px;
+			color: #000;
+			cursor: pointer;
+			border-radius: 10px;
+			background-color: lightgreen;
+			position:absolute;
+			right: 20px;
+			bottom: 20px;
+		}
+		.hide {
+			display: none;
+		}
+		</style>
 
 </head>
 <body>
@@ -23,28 +163,48 @@
 			<h1 class="h1-HW">Домашнее задание №3</h1>
 			<section сlass="section-HW">
 				<article class="article-HW">
-					<p>1. </p>
-					<p>2. </p>
-					<p>3. </p>
+					<p>1. Переделайте функциональное выражение getRequest() так, чтобы оно использовало промисы.</p>
+					<p>2. Добавьте в соответствующие классы методы добавления товара в корзину, удаления товара из корзины и получения списка
+					товаров корзины.</p>
 				</article>
 			</section>
 			<h1 class="h1-HW">Решение</h1>
 			<!-- ! ЗАДАЧА №1 -->
 			<article class="article-HW">
-				<p class="bold">1. </p>
+				<p class="bold">1. Переделайте функциональное выражение getRequest() так, чтобы оно использовало промисы.</p> 
 				<p>Пояснения:</p>
+				<p>Код находится в файле "script._3.js" в разделе "Задание № 1".<br>
+				Результатом работы запроса является вывод в Консоль перечня марок пива (id, title), полученного из json файла, находящегося на сайте с тестовыми API.</p>
 			</article>
 			<!-- ! ЗАДАЧА №2 -->
 			<article class="article-HW">
-				<p class="bold">2. </p>
+				<p class="bold">2. Добавьте в соответствующие классы методы добавления товара в корзину, удаления товара из корзины и получения списка
+				товаров корзины.</p>
 				<p>Пояснения:</p>
-				<p></p>
+				<p>Код находится в файле "script._3.js" в разделе "Задание № 2".</p>
+				<p> Корзина и Каталог товаров приведены ниже.<br>
+					1. Товары в Корзине получены путем запроса в файл, находящийся на сервисе GitHub.<br>
+					Для формирования запроса был создан метод "getBasket()" в классе "BasketList()".<br>
+					2. При нажатии на кнопку "Удалить из корзины" карточки товара, находящегося в Корзине, происходит удаление карточки товара<br>
+					Для удаления товара из Корзины был создан метод "deleteFromBasket()" в классе "BasketList()".
+					3. При нажатии на кнопку "Добавить в корзину" карточки товара, находящегося в Каталоге, происходит добавление карточки товара в корзину с изменением статуса кнопки "Добавить / Удалить".<br>
+					Для добавления товара в Корзину был создан метод "addToBasket()" в классе "BasketList()".</p>
 			</article>
-			<!-- ! ЗАДАЧА №3 -->
-			<article class="article-HW">
-				<p class="bold">3. </p>
-				<p>Пояснения:</p>
-				<p></p>
+			<!-- ! КОРЗИНА ТОВАРОВ -->
+			<article>
+				<div class ="basketDiv">
+					<div class="basket">
+						<h1>Корзина</h1>
+						<div class="basket_goods"></div>
+					</div>
+					<span class='sum'></span>
+					<span class='quantity'></span>
+				</div>
+				<!-- ! КАТАЛОГ ТОВАРОВ -->
+				<div class="flex__row">
+					<h1>Каталог товаров</h1>
+					<div class="products"></div>
+				</div>
 			</article>
 		</div>
 	</div>
