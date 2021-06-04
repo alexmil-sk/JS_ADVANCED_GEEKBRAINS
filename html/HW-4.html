@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Подключение файла JS скриптов -->
+	<script defer src="../js/script_3.js"></script>
+	<!-- Подключение jQuery -->
+	<script defer src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<title>Домашнее задание №4</title>
+	<link rel="stylesheet" href="../css/style.css">
+	<style>
+		h1 {
+			font-size: 26px;
+			text-align: center;
+			color: #000;
+		}
+		h2 {
+			font-size: 18px;
+			text-align: left;
+			color: #000;
+		}
+		h3 {
+			font-size: 18px;
+			text-align: center;
+			color: #000;
+			margin: 10px 0 0 0;
+		}
+		.left {
+			text-align: left;
+			margin-top: 30px;
+			margin-bottom: 10px
+		}
+		.boldBlack {
+			color:#000;
+			font-weight: 700;
+			margin-top: 10px;
+			margin-bottom: 20px
+		}
+		.center {
+			text-align: center;
+		}
+		.basket_goods,
+		.products {
+			display: flex;
+			justify-content: right;
+			width: 100%;
+			min-height: 375px;
+			border: 3px solid black;
+			padding: 10px;
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+		.basket_goods{
+			min-height: 376px;
+		}
+		.product-item {
+			width: 20%;
+			min-height: 350px;
+			justify-self: center;
+			border: 2px solid gray;
+			margin-left: 10px;
+			text-align: center;
+			background-color: #FFFACD;
+		}
+		.product-item img{
+			width: 180px;
+			opacity: 0.8;
+			
+		}
+		.product-item:first-child {
+			margin-left: 0px;
+		}
+		.flex__row {
+			display: flex;
+			flex-direction: column;
+		}
+		.flex__row img {
+			height: 200px;
+			margin: 20px;
+			border: 1px solid gray;
+		}
+		.blind {
+			transform: scale(1.0);
+			margin-top: 50px !important;
+		}
+		.buy_btn__del,
+		.buy-btn {
+			width: auto;
+			height: 30px;
+			color: black;
+			padding: 0 10px;
+			margin-top: 5px;
+			border: 1px solid #000;
+			border-radius: 5px;
+		}
+		.buy-btn {
+			background-color: lightgreen;
+		}
+		.buy_btn__del {
+			background-color: lightcoral;
+		}
+		.total {
+			font-size: 30px;
+			font-weight: 700;
+			color: #000;
+			margin-bottom: 40px;
+		}
+		.basketDiv {
+			margin-bottom: 30px;
+		}
+		.product-item h1 {
+			padding-left: 30px;
+		}
+		.product-item p{
+			font-size: 25px;
+			padding-left: 30px;
+		}
+		
+		.basket {
+			width: 100%;
+			min-height: 350px;
+			margin-bottom: 20px;
+			background-color: #fff;
+			margin: 50px auto;
+			/*border: 1px solid #ccc;*/
+		}
+		span {
+			font-size: 25px;
+			text-align: left;
+			line-height: 2em;
+			margin-left:30px;
+			border-top: 1px solid #000;
+			font-weight: bold;
+		}
+		.buyBtn {
+			content: '';
+			width: 100px;
+			height: 40px;
+			font-size: 20px;
+			color: #000;
+			cursor: pointer;
+			border-radius: 10px;
+			background-color: lightgreen;
+			position:absolute;
+			right: 20px;
+			bottom: 20px;
+		}
+		.hide {
+			display: none;
+		}
+		</style>
+
+</head>
+<body>
+	<div class="wrapper">
+		<div class="container">
+			<a href="../index.html" class="btn-home"><img src="../img/home.svg" alt=""></a>
+			<h1 class="h1-HW">Домашнее задание №4</h1>
+			<section сlass="section-HW">
+				<article class="article-HW">
+					<p>1. Дан большой текст, в котором для оформления прямой речи используются одинарные кавычки. Придумать шаблон, который
+					заменяет одинарные кавычки на двойные.</p>
+					<p>2. Улучшить шаблон так, чтобы в конструкциях типа aren't одинарная кавычка не заменялась на двойную.</p>
+					<p>3.* Создать форму обратной связи с полями: Имя, Телефон, E-mail, текст, кнопка "Отправить".<br>
+						При нажатии на кнопку "Отправить" произвести валидацию полей следующим образом:</p>
+						<p>
+						a. Имя содержит только буквы.<br>
+						b. Телефон имеет вид +7(000)000-0000.<br>
+						c. E-mail имеет вид mymail@mail.ru, или my.mail@mail.ru, или my-mail@mail.ru.<br>
+						d. Текст произвольный.<br>
+						e. Если одно из полей не прошло валидацию, необходимо выделить это поле красной рамкой и сообщить пользователю об
+						ошибке.</p>
+				</article>
+			</section>
+			<h1 class="h1-HW">Решение</h1>
+			<!-- ! ЗАДАЧА №1 -->
+			<article class="article-HW">
+				<p class="bold">1. Дан большой текст, в котором для оформления прямой речи используются одинарные кавычки.<br> Придумать шаблон, который заменяет одинарные кавычки на двойные.</p> 
+				<p>Пояснения:</p>
+				<p></p>
+			</article>
+			<!-- ! ЗАДАЧА №2 -->
+			<article class="article-HW">
+				<p class="bold">2. Улучшить шаблон так, чтобы в конструкциях типа aren't одинарная кавычка не заменялась на двойную.</p>
+				<p>Пояснения:</p>
+				<p></p>
+			</article>
+			<!-- ! ЗАДАЧА №3 -->
+			<article class="article-HW">
+				<p class="bold">3.* Создать форму обратной связи с полями: Имя, Телефон, E-mail, текст, кнопка "Отправить".<br>
+				При нажатии на кнопку "Отправить" произвести валидацию полей следующим образом:</p>
+				<p>
+					a. Имя содержит только буквы.<br>
+					b. Телефон имеет вид +7(000)000-0000.<br>
+					c. E-mail имеет вид mymail@mail.ru, или my.mail@mail.ru, или my-mail@mail.ru.<br>
+					d. Текст произвольный.<br>
+					e. Если одно из полей не прошло валидацию, необходимо выделить это поле красной рамкой и сообщить пользователю об
+					ошибке.
+				</p>
+				<p>Пояснения:</p>
+				<p></p>
+			</article>
+			<!-- ! КОРЗИНА ТОВАРОВ -->
+			<article>
+				<div class ="basketDiv">
+					<div class="basket">
+						<h1>Корзина</h1>
+						<div class="basket_goods"></div>
+					</div>
+					<span class='sum'></span>
+					<span class='quantity'></span>
+				</div>
+				<!-- ! КАТАЛОГ ТОВАРОВ -->
+				<div class="flex__row">
+					<h1>Каталог товаров</h1>
+					<div class="products"></div>
+				</div>
+			</article>
+		</div>
+	</div>
+</body>
+</html>
