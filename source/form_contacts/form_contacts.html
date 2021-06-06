@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="form_contacts.css">
+	<title>Форма обратной связи</title>
+</head>
+
+<body>
+	<div class="container">
+		<a href="../../html/HW-4.html #answerBtn" class="btn-home"><img src="../../img/home.svg" alt="home"></a>
+		<div class="content">
+			<div class="userForm">
+				<form action="#" class="myForm">
+					<fieldset>
+						<h3>ФОРМА ОБРАТНОЙ СВЯЗИ</h3>
+
+						<p><label for="userName"><strong>Введите имя пользователя</strong></label></p>
+						<p><input data-info="myInput" type="text" placeholder="Ваше имя" id="userName" size="27" name="Имя" class=""><br>
+						<span>*Имя пользователя может содержать от 4 до 6 символов (только латинские буквы в любом регистре).</span>
+						</p>
+
+						<p><label for="phone"><strong>Введите номер телефона</strong></label></p>
+						<p><input data-info="myInput" type="tel" id="userPhone" placeholder="+7(000)000-0000" minlength="16" maxlength="15" name="Номер телефона" class=""><br>
+						<span>*Номер телефона может содержать ровно 15 символов.</span>
+						</p>
+
+						<p><label for="userMail"><strong>Введите email пользователя</strong></label></p>
+						<p><input data-info="myInput" type="email" placeholder="адрес эл. почты" id="userMail" size="27" name="Электронная почта" class=""><br>
+						<span>*Адрес электронной почты должен быть в одном из следующих форматах:<br>
+						mymail@mail.ru<br>
+						my.mail@mail.ru<br>
+						my-mail@mail.ru.</span>
+						</p>
+
+						<p><label for="userText"><strong>Введите комментарий</strong></label></p>
+						<p><textarea data-info="myInput" name="Комментарий" id="userText" cols="44" rows="5"></textarea></p>
+						<br>
+						<p class="center"><input type="submit" id="submit" value="Отправить">&nbsp;
+						<input type="reset" id="continue" value="Продолжить">&nbsp;
+						<input type="reset" id="reset" value="Очистить">
+						</p>
+						<span><strong style="color: blue">"ОТПРАВИТЬ"</strong> - отправка формы.<br>
+						<strong style="color: yellow">"ПРОДОЛЖИТЬ"</strong> - сброс предупреждения об ошибки без очистки заполненных полей.<br>
+						<strong style="color: red">"ОЧИСТИТЬ"</strong> - сброс предупреждения об ошибки с полной очисткой формы. </span>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script>
+		
+		const myForm = document.querySelector('.myForm');
+		const sendBtn = myForm.querySelector('#submit');
+		const continueBtn = myForm.querySelector('#continue');
+		const clearBtn = myForm.querySelector('#reset');
+		const userNameInput = myForm.querySelector('#userName');
+		const userPhoneInput = myForm.querySelector('#userPhone');
+		const userMailInput = myForm.querySelector('#userMail');
+		const userText = myForm.querySelector('#userText');
+		const myField = myForm.querySelectorAll('[data-info]');
+
+		const regExprName = /^[a-zA-Z]{4,6}$/;
+		const regExprPhone = /^[+][7][(][0-9]{3}[)][0-9]{3}[ -][0-9]{4}$/;
+		const regExprMail_1 = /^[a-z]{6}@[a-z]{4}[\.][a-z]{2}$/;
+		const regExprMail_2 = /^[a-z]{2}[\.-][a-z]{4}@[a-z]{4}[\.][a-z]{2}$/;
+
+
+		const checkEmptyFields = () => {
+			myField.forEach(item => {
+				if (!item.value) {
+					alert('Заполните обязательное поле ' + item.name + ' !!!');
+				}
+			});
+
+				//todo__Вариант_2__ с if__---------------------
+			/*
+			if (!userNameInput.value ) {
+				alert('Заполните имя пользователя');
+			} else if (!userPhoneInput.value) {
+				alert('Укажите телефон пользователя');
+			} else if (!userMailInput.value) {
+				alert('Укажите электронную почту пользователя');
+			} else if (!userText.value) {
+				alert('Введите свой комментарий');
+			}
+			*/
+
+				//todo__Вариант_3__ с for ----------------------
+			/*
+			for (i = 0; i < myField.length; i++) {
+				if (!myField[i].value) {
+					alert('Заполните обязательное поле ' + myField[i].name + ' !!!');
+				}
+			}
+			*/
+		};
+
+		const checkNameField = () => {
+			if (!regExprName.test(userNameInput.value)) {
+				userNameInput.classList.add('red');
+				alert('Введите корректное имя пользователя!');
+			}
+		}
+
+		const checkPhoneField = () => {
+			if (!regExprPhone.test(userPhoneInput.value)) {
+				userPhoneInput.classList.add('red');
+				alert('Введите корректный номер телефона!');
+			}
+		}
+
+		const checkMailField = () => {
+			if (!regExprMail_1.test(userMailInput.value) && !regExprMail_2.test(userMailInput.value)) {
+				userMailInput.classList.add('red');
+				alert('Введите корректную электронную почту!');
+			}
+		}
+
+		sendBtn.addEventListener('click', ev => {
+			ev.preventDefault();
+			//-----------------------------------------
+			console.log('Имя пользователя: ' + userNameInput.value);
+			console.log('Номер телефона пользователя: ' + userPhoneInput.value);
+			console.log('Адрес электронной почты пользователя: ' + userMailInput.value);
+			console.log('Комментарий пользователя: ' + userText.value);
+			//------------------------------------------
+			
+			//checkEmptyFields();//* Отсутствует необходимость т.к. проверка идет Регулярными выражениями
+			checkNameField();
+			checkPhoneField();
+			checkMailField();
+		});
+
+		continueBtn.addEventListener('click', (ev) => {
+				ev.preventDefault();
+				myField.forEach(item => {
+					if (item) {
+						item.classList.remove('red');
+					}
+				});
+			});
+
+			clearBtn.addEventListener('click', (ev) => {
+					myField.forEach(item => {
+						if (item) {
+							item.classList.remove('red');
+						}
+					});
+				});
+		
+
+	</script>
+
+</body>
+</html>

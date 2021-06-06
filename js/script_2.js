@@ -64,7 +64,8 @@ class ProductList {
 		h2Total.classList.add('total');
 		const flexRow = document.querySelector('.flex__row');
 		flexRow.append(h2Total);
-		h2Total.innerHTML = 'ИТОГО, общая стоимость игрушек составляет: ';
+		//h2Total.innerHTML = 'ИТОГО, общая стоимость игрушек составляет: '; //todo__По совету преподавателя удалил_------------------------------
+		h2Total.innerHTML = `ИТОГО, общая стоимость игрушек составляет: ${this.sumTotal()} \u20bd`; //todo__По совету преподавателя добавил_см. метод sumTotal() ------------------------------
 	}
 
 	sumTotal() {
@@ -73,7 +74,8 @@ class ProductList {
 		for (let item of this.goods) {
 			sum += item.price;
 		}
-		sumT.insertAdjacentHTML('beforeend', `${sum} \u20bd`);
+		return sum; //todo__По совету преподавателя добавил_см. метод createTotal() ------------------------------
+		//sumT.insertAdjacentHTML('beforeend', `${sum} \u20bd`);//todo__По совету преподавателя удалил_------------------------------
 	}
 
 }
