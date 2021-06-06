@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Подключение файла JS скриптов -->
+	<script defer src="../js/script_4.js"></script>
+	<!-- Подключение jQuery -->
+	<script defer src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<title>Домашнее задание №4</title>
+	<link rel="stylesheet" href="../css/style.css">
+	<style>
+		h1 {
+			font-size: 26px;
+			text-align: center;
+			color: #000;
+		}
+		h2 {
+			font-size: 18px;
+			text-align: left;
+			color: #000;
+		}
+		h3 {
+			font-size: 18px;
+			text-align: center;
+			color: #000;
+			margin: 10px 0 0 0;
+		}
+		.left {
+			text-align: left;
+			margin-top: 30px;
+			margin-bottom: 10px
+		}
+		.boldBlack {
+			color:#000;
+			font-weight: 700;
+			margin-top: 10px;
+			margin-bottom: 20px
+		}
+		.center {
+			text-align: center;
+		}
+		.basket_goods,
+		.products {
+			display: flex;
+			justify-content: right;
+			width: 100%;
+			min-height: 375px;
+			border: 3px solid black;
+			padding: 10px;
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+		.basket_goods{
+			min-height: 376px;
+		}
+		.flex {
+			display: flex;
+			justify-content: space-around;
+		}
+
+		.p1, .p2 {
+			width: 40%;
+		}
+
+		.p1 h2, .p2 h2 {
+			text-align: center;
+			font-weight: bold;
+		}
+		.p1_result,
+		.p2_result,
+		.p3_result,
+		.p4_result {
+			width: 100%;
+			min-height: 350px;
+			justify-self: center;
+			border: 2px solid gray;
+			margin-left: 10px;
+			text-align: left;
+			padding-left: 10px;
+			background-color: #FFFACD;
+		}
+		.product-item {
+			width: 50%;
+			min-height: 350px;
+			justify-self: center;
+			border: 2px solid gray;
+			margin-left: 10px;
+			text-align: center;
+			background-color: #FFFACD;
+		}
+		.product-item img{
+			width: 180px;
+			opacity: 0.8;
+			
+		}
+		.product-item:first-child {
+			margin-left: 0px;
+		}
+		.flex__row {
+			display: flex;
+			flex-direction: column;
+		}
+		.flex__row img {
+			height: 200px;
+			margin: 20px;
+			border: 1px solid gray;
+		}
+		.blind {
+			transform: scale(1.0);
+			margin-top: 50px !important;
+		}
+		.buy_btn__del,
+		.buy-btn {
+			width: auto;
+			height: 30px;
+			color: black;
+			padding: 0 10px;
+			margin-top: 5px;
+			border: 1px solid #000;
+			border-radius: 5px;
+		}
+		.buy-btn {
+			background-color: lightgreen;
+		}
+		.buy_btn__del {
+			background-color: lightcoral;
+		}
+		.total {
+			font-size: 30px;
+			font-weight: 700;
+			color: #000;
+			margin-bottom: 40px;
+		}
+		.basketDiv {
+			margin-bottom: 30px;
+		}
+		.product-item h1 {
+			padding-left: 30px;
+		}
+		.product-item p{
+			font-size: 25px;
+			padding-left: 30px;
+		}
+		
+		.basket {
+			width: 100%;
+			min-height: 350px;
+			margin-bottom: 20px;
+			background-color: #fff;
+			margin: 50px auto;
+			/*border: 1px solid #ccc;*/
+		}
+		span {
+			font-size: 25px;
+			text-align: left;
+			line-height: 2em;
+			margin-left:30px;
+			border-top: 1px solid #000;
+			font-weight: bold;
+		}
+		.buyBtn {
+			content: '';
+			width: 100px;
+			height: 40px;
+			font-size: 20px;
+			color: #000;
+			cursor: pointer;
+			border-radius: 10px;
+			background-color: lightgreen;
+			position:absolute;
+			right: 20px;
+			bottom: 20px;
+		}
+		.hide {
+			display: none;
+		}
+		.reds {
+			color: red;
+		}
+		</style>
+
+</head>
+<body>
+	<div class="wrapper">
+		<div class="container">
+			<a href="../index.html" class="btn-home"><img src="../img/home.svg" alt=""></a>
+			<h1 class="h1-HW">Домашнее задание №4</h1>
+			<section сlass="section-HW">
+				<article class="article-HW">
+					<p>1. Дан большой текст, в котором для оформления прямой речи используются одинарные кавычки. Придумать шаблон, который
+					заменяет одинарные кавычки на двойные.</p>
+					<p>One: 'Hi Mary.'<br>
+						Two: 'Oh, hi.'<br>
+						One: 'How are you doing?'<br>
+						Two: 'I'm doing alright. How about you?'<br>
+						One: 'Not too bad. The weather is great isn't it?'<br>
+						Two: 'Yes. It's absolutely beautiful today.'<br>
+						One: 'I wish it was like this more frequently.'<br>
+						Two: 'Me too.'<br>
+						One: 'So where are you going now?'<br>
+						Two: 'I'm going to meet a friend of mine at the department store'<br>
+						One: 'Going to do a little shopping?'<br>
+						Two: 'Yeah, I have to buy some presents for my parents.'<br>
+						One: 'What's the occasion?'<br>
+						Two: 'It's their anniversary.'<br>
+						One: 'That's great. Well, you better get going. You don't want to be late.'<br>
+						Two: 'I'll see you next time.'<br>
+						One: 'Sure. Bye.'</p>
+					<p>2. Улучшить шаблон так, чтобы в конструкциях типа aren't одинарная кавычка не заменялась на двойную.</p>
+					<p>3.* Создать форму обратной связи с полями: Имя, Телефон, E-mail, текст, кнопка "Отправить".<br>
+						При нажатии на кнопку "Отправить" произвести валидацию полей следующим образом:</p>
+						<p>
+						a. Имя содержит только буквы.<br>
+						b. Телефон имеет вид +7(000)000-0000.<br>
+						c. E-mail имеет вид mymail@mail.ru, или my.mail@mail.ru, или my-mail@mail.ru.<br>
+						d. Текст произвольный.<br>
+						e. Если одно из полей не прошло валидацию, необходимо выделить это поле красной рамкой и сообщить пользователю об
+						ошибке.</p>
+				</article>
+			</section>
+			<h1 class="h1-HW">Решение</h1>
+			
+			<!-- ! ЗАДАЧА №1 -->
+			<article class="article-HW">
+				<p class="bold">1. Дан большой текст, в котором для оформления прямой речи используются одинарные кавычки.<br> Придумать шаблон, который заменяет одинарные кавычки на двойные.</p> 
+				<p id = "text1">
+					One: 'Hi Mary.'<br>
+					Two: 'Oh, hi.'<br>
+					One: 'How are you doing?'<br>
+					Two: 'I'm doing alright. How about you?'<br>
+					One: 'Not too bad. The weather is great isn't it?'<br>
+					Two: 'Yes. It's absolutely beautiful today.'<br>
+					One: 'I wish it was like this more frequently.'<br>
+					Two: 'Me too.'<br>
+					One: 'So where are you going now?'<br>
+					Two: 'I'm going to meet a friend of mine at the department store'<br>
+					One: 'Going to do a little shopping?'<br>
+					Two: 'Yeah, I have to buy some presents for my parents.'<br>
+					One: 'What's the occasion?'<br>
+					Two: 'It's their anniversary.'<br>
+					One: 'That's great. Well, you better get going. You don't want to be late.'<br>
+					Two: 'I'll see you next time.'<br>
+					One: 'Sure. Bye.'</p>
+				<p>Пояснения:</p>
+				<p>Первое задание не должно зависеть от второго и наоборот. Оба задания должны быть независимы</p>
+				<p class="boldBlack">1. Замена всех одинарных кавычек без форматирования текста</p>
+				<p>document.querySelector('.p1_result').insertAdjacentHTML('beforeend', text1.innerText.replaceAll('\'', '\"'));</p>
+				
+				<p class="boldBlack">2. Замена всех одинарных кавычек за исключением апострофов c форматированием текста</p>
+				<p>const text2 = text1.innerText.replaceAll('\.\'', '\.\"< br >'); - замена одинарных кавычек после точек на конце строки;</p>
+				<p>const text3 = text2.replaceAll('\?\'', '\?\"< br >'); - замена одинарных кавычек после знака вопроса на конце строки;</p>
+				<p>document.querySelector('.p2_result').insertAdjacentHTML('beforeend', text3.replaceAll(' \' ', ' \" ')); - замена одинарных кавычек в начале строки.</p>
+				<div class="flex">
+					<div class="p1">
+						<h2>Замена всех одинарных кавычек без форматирования текста</h2>
+						<p class="p1_result"></p>
+					</div>
+					<div class="p2">
+						<h2>Замена всех одинарных кавычек за исключением апострофов c форматированием  текста</h2>
+						<p class="p2_result"></p>
+					</div>
+				</div>
+			</article>
+			<!-- ! ЗАДАЧА №2 -->
+			<article class="article-HW">
+				<p class="bold">2. Улучшить шаблон так, чтобы в конструкциях типа aren't одинарная кавычка не заменялась на двойную.</p>
+				<p>Пояснения:</p>
+				<p>Первое задание не должно зависеть от второго и наоборот. Оба задания должны быть независимы</p>
+				<p>За исходный шаблон принят шаблон с заменой всех кавычек без форматирования.</p>
+				<p class="boldBlack">1. Замена всех одинарных кавычек без форматирования текста</p>
+				<p>document.querySelector('.p1_result').insertAdjacentHTML('beforeend', text1.innerText.replaceAll('\' ', '\" '));</p>
+				<p class="boldBlack">2. Замена всех одинарных кавычек за исключением апострофов c форматированием текста.</p>
+				<p>let regexp = /\B'/g; - регулярное выражение на замену всех одинарных кавычек кроме апострофов, без форматирования текста;</p>
+				<p>let text5 = text1.innerText.replace(regexp, ' " '); - замена всех одинарных кавычек кроме апострофов;</p>
+				<p>let regexp1 = /\"\B/g; - регулярное выражение на вставку переноса строки;</p>
+				<p>document.querySelector('.p4_result').insertAdjacentHTML('beforeend', text5.replace(regexp1, '\"< br >')); - вставка переноса строки.</p>
+				
+				<div class="flex">
+					<div class="p1">
+						<h2>Замена всех одинарных кавычек без форматирования текста</h2>
+						<p class="p3_result"></p>
+					</div>
+					<div class="p2">
+						<h2>Без замены апострофов на двойные кавычки и c форматированием текста</h2>
+						<p class="p4_result"></p>
+					</div>
+				</div>
+			</article>
+			<!-- ! ЗАДАЧА №3 -->
+			<article class="article-HW">
+				<p class="bold">3.* Создать форму обратной связи с полями: Имя, Телефон, E-mail, текст, кнопка "Отправить".<br>
+				При нажатии на кнопку "Отправить" произвести валидацию полей следующим образом:</p>
+				<p>
+					a. Имя содержит только буквы.<br>
+					b. Телефон имеет вид +7(000)000-0000.<br>
+					c. E-mail имеет вид mymail@mail.ru, или my.mail@mail.ru, или my-mail@mail.ru.<br>
+					d. Текст произвольный.<br>
+					e. Если одно из полей не прошло валидацию, необходимо выделить это поле красной рамкой и сообщить пользователю об
+					ошибке.
+				</p>
+				<p>Пояснения:</p>
+				<p></p>
+				<button id="answerBtn" type="button" onclick="window.location.href='../source/form_contacts/form_contacts.html'" 
+					class="answerBtn">ФОРМА</button>
+				<br>
+				<br>
+			</article>
+			
+
+
+
+
+
+
+			<!-- ! КОРЗИНА ТОВАРОВ -->
+			<!-- todo---------------------------------------------
+			<article>
+				<div class ="basketDiv">
+					<div class="basket">
+						<h1>Корзина</h1>
+						<div class="basket_goods"></div>
+					</div>
+					<span class='sum'></span>
+					<span class='quantity'></span>
+				</div>
+					todo---------------------------------------->
+
+				<!-- ! КАТАЛОГ ТОВАРОВ -->
+				<!-- todo---------------------------------------------
+
+				<div class="flex__row">
+					<h1>Каталог товаров</h1>
+					<div class="products"></div>
+				</div>
+			</article>
+						todo---------------------------------------->
+
+
+
+
+						
+			<script>
+				//__??__РАЗДЕЛ_1__ОБЩАЯ ТЕОРИЯ РЕГУЛЯРНЫХ ВЫРАЖЕНИЙ__===========================================================
+
+				//__Синтаксис Вариант № 1
+				//let regExp = new RegExp('выражение', 'флаги');
+
+				//__Синтаксис Вариант № 2
+				//let regExpr = /выражение/флаги;
+
+				// i - поиск без учета регистра
+				// g - множественный поиск
+				// m - многострочный поиск
+
+				//let str = 'Язык JavaScript называется так из-за популярности языка Java';
+				//let regExp1 = new RegExp('java', 'i');
+				//console.log(regExp1);
+
+				//_todo__Метод search__Вернет индекс первого найденного совпадения или -1, если ничего не найдено__=====
+				//__действует только флаг 'i'
+				//console.log(str.search(regExp1));
+
+				//_todo__Метод match__===============================================================
+				//__данный метод без флага g вернет подробную информацию об имеющемся совпадении
+				//console.log(str.match(/java/i));
+
+				//__с флагом g возвращает массив со всеми совпадениями без подробной информации
+				//__если совпадений нет, то возвращает null
+				//console.log(str.match(/java/ig));
+
+				//_todo__Метод replace__==============================================================
+
+				//console.log('+7 (000)000-00-00'.replace(/-/g, '*'));
+				//console.log('+7 (000)000-00-00'.replaceAll('-', '*'));
+
+				//let name = 'SnowФ9, John';
+				//console.log(name.replace(/([a-zА-Я0-9]+), ([a-z]+)/i, 'Было: $&.\nСтало: $2 $1.\nМожно вставить любой текст'));
+
+				//__Классы - сокращенные наборы вариантов поиска__=====================================
+				
+				//Перечень классов:
+				// \d - эквивалент [0123456789], сокращенно [0-9]
+				// \D - эквивалент [^0123456789], сокращенно [^0-9] - это соответствует обратному смылу \d т.е. все, что не является цифрами. [не0123456789] или [не0-9], то есть все кроме чисел
+				// \w - эквивалент [a-z0-9_]
+				// \W - эквивалент [^a-z0-9_]
+				// \s - эквивалент space, tab, \n
+				// \S - эквивалент ^space, ^tab, ^\n
+				// \b - эквивалент граница слова, вариант написания при поиске match(/\bJava\b/ig) - с двух сторон есть граница слова
+				// \B - эквивалент НЕ граница слова, вариант написания при поиске match(/\bJava\B/ig) - слева есть граница слова, а справа нет границы слова
+
+				//_Квантификаторы - элементы, определяющие количество элементов поиска в регулярных выражениях__=====================================
+
+				//Перечень квантификаторов:
+				// {m} - эквивалент строго m раз
+				// {m, n} - эквивалент диапазону от m до n раз
+				// {m,} - эквивалент диапазону от m до бесконечности раз
+				// {,n} - эквивалент диапазону от 0 до n раз
+
+				//_Квантификаторы - сокращения самых популярных квантификаторов__=====================================
+				// + - эквивалент {1,} от 1 и дальше до бесконечности
+				// * - эквивалент {0,} любое количество значений либо есть либо нет 
+				// ? - эквивалент {0,1} одиночное значение либо есть, либо нет. 
+				// ^ - является знаком начала строки (именно строки. а не предложения) в обычном выражении, но в классах символ отрицания
+				// $ - является знаком конца строки(именно строки.а не предложения)
+				// . - точка, как служебный символ, является аналогом любого символа, поэтому для указания точки необходимо ее экранировать обратным слэшем \
+				//__!! ВНИМАНИЕ!!!__ - ЛЮБОЙ СПЕЦИАЛЬНЫЙ СИМВОЛ, КОТОРЫЙ МЫ ХОТИМ НАЙТИ, НЕОБХОДИМО ЭКРАНИРОВАТЬ В ЗАПРОСЕ ОБРАТНЫМ СЛЭШЕМ
+
+				//Пример_1__=============================================================================================
+				//__Вариант_1__replace
+				//console.log('+7-(000) 000:00-00'.replace(/\D/g, ''));//70000000000
+
+				//__Вариант_2__match
+				//console.log('+7-(000) 000:00-00'.match(/\d/g).join(''));//70000000000
+
+				//Пример_2__=============================================================================================
+				//__Вариант__1__---------------------------------------------
+				//console.log('color colour colotr'.match(/colot?u?r/ig));
+
+				//__Вариант__2__
+				//console.log('color colour colotr'.match(/colo[ut]?r/ig));
+
+				//__Пример__3__с поиском слова при наличии границы слова__================================================
+
+				//console.log('Язык JavaScript - это не Java вам =)'.match(/\bjava\B/i));
+
+				//Пример__4__ с проверкой
+				//console.log('JavaScript - это не Java'.match(/^java/i)); //Здесь символ ^ является знаком начала строки (именно строки. а не предложения)
+				//console.log('JavaScript - это не Java'.match(/java$/i)); //Здесь символ $ является знаком конца строки (именно строки. а не предложения)
+				//console.log('Java'.match(/^java$/i));//Здесь слово Java является и началом и концом строки, т.к. оно единственное
+
+				//__Пример__4__с поиском в строке с указанием Главы книги__================================================
+
+				//console.log('Chapter 7.2 Chapter 7-3'.match(/\d\.\d/g));//точка, как служебный символ, является аналогом любого символа, поэтому для указания точки необходимо ее экранировать обратным слэшем \
+
+				//__??__РАЗДЕЛ_2__МЕТОДЫ СО СТОРОНЫ РЕГУЛЯРНЫХ ВЫРАЖЕНИЙ__===========================================================
+
+				//__Метод_1__test (true / false)_сначала пишем регулярное выражение, а потом к нему подсоединяем метод---
+
+				//let str1 = 'Язык JavaScript называется так из-за популярности языка Java';
+				//console.log(/java/i.test(str1));//возвращается значение true / false
+
+				//__Метод_2__lastIndex_вспомогательный маячок окончания строки, т.е lastIndex указывает индекс символа следующего после последнего символа поискового запроса регулярного выражения, а также начальный символ для продолжения поиска данных ---------------------------------------------------------------------------------------------
+
+				/*
+
+				let str1 = 'Язык JavaScript называется так из-за популярности языка Java';
+				let result;// для сохранения промежуточной информации о каждом найденном совпадении
+				let regExp = /java/ig;
+
+				console.log(`Начальный lastIndex ${regExp.lastIndex}`); //метод lastIndex присутствует в каждом регулярном выражении
+				//он вызывается в цикле и возвращает либо true либо null с остановкой цикла
+
+				while (result = regExp.exec(str1)) {
+					console.log(`Текущий lastIndex ${regExp.lastIndex}`);
+					console.log(result);//На каждой итерации result выводит нам сообщение, и на последней выведет null и остановится
+				}
+				console.log(`Конечный lastIndex ${regExp.lastIndex}`);
+				*/
+			</scrip>
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>
