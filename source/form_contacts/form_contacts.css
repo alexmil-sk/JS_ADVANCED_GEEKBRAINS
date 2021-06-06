@@ -1,0 +1,163 @@
+
+body {
+	text-align: justify;
+}
+
+.container {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	border: 3px solid #174C87;
+	background-color: #f8f8f8;
+	width: 1200px;
+	margin: 0 auto 0 auto;
+	padding: 5px ;
+	opacity: 0.9;
+}
+
+h1 {
+	background-color: #174C87;
+	color: white;
+}
+
+h1, h2, h3, h4 {
+	text-align: center;
+}
+
+span {
+	font-size: 14px;
+	text-align-last: left;
+	line-height: 16px;
+}
+
+.center {
+	text-align: center;
+}
+
+.userForm {
+	width: 450px;
+	background-color: rgb(153, 199, 236);
+	padding-top: 0;
+	margin: 0 auto 20px auto;
+}
+
+input[type=tel],
+input[type=text],
+input[type=password],
+input[type=date],
+input[type=email],
+select {
+	background-color: rgb(180, 236, 165);
+}
+
+input[type=tel]:focus,
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=date]:focus,
+input[type=email]:focus,
+select:focus {
+	background-color:#092A5E;
+	color: white;
+}
+
+input[type=submit] {
+	color: white;
+	background: #014A97;
+	height: 2em;
+	width: 80px;
+}
+
+input[type=submit]:hover {
+	color:#092A5E;
+	background:#59ADD1;
+	border: solid 2px #092A5E;
+	cursor: pointer;
+}
+
+
+input[type=submit]:active {
+	background-color: #092A5E;
+	color: white;
+}
+
+input[type=reset] {
+	color: white;
+	background: red;
+	height: 2em;
+	width: 80px;
+}
+
+input[type=reset]:hover {
+	color: black;
+	background: pink;
+	cursor: pointer;
+}
+
+input[type=reset]:active {
+	color: white;
+	background: red;
+}
+
+input[id=continue] {
+	color: black;
+	background: yellow;
+	cursor: pointer;
+	width: 100px;
+}
+
+input[id=continue]:hover {
+	background: orange);
+}
+
+input[id=continue]:active {
+	background: rgb(255, 145, 0);
+}
+
+
+.red {
+	border: 2px solid red;
+	color: white;
+	background-image: linear-gradient(to right, red, pink);
+}
+
+input:invalid:required {
+	background-image: linear-gradient(to right, pink, lightgreen);
+	color:#000;
+}
+
+.userOpinion {
+	width: 600px;
+	margin: 0 auto 0 auto;
+}
+
+.userOpinion p {
+	text-align: center;
+}
+
+.userOpinion fieldset {
+background-color: #c5ccd3;
+}
+
+.userOpinion legend {
+	color: black;
+	margin: auto;
+	background-color: #BAC2C9;
+	line-height: 0.1em;
+	border: 1px solid #092A5E;
+}
+
+.userOpinion legend h2 {
+	padding: 0 7px;
+}
+
+textarea {
+	color: rgb(58, 56, 56);
+	font-size: 16px;
+	font-family: Verdana, Tahoma, Geneva, sans-serif;
+	background-color: rgb(214, 210, 210);
+}
+
+textarea:focus {
+	background-color:#092A5E;
+	color: white;
+	text-transform: capitalize;
+}
+
