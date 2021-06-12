@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script defer src="Cart_Vue.js"></script>
+	<title>Корзина интернет-магазина</title>
+	<style>
+	
+		h1 {
+			font-size: 26px;
+			text-align: center;
+			color: #000;
+			margin: 0;
+			padding: 20px 0;
+		}
+		h2 {
+			font-size: 18px;
+			text-align: center;
+			color: #000;
+		}
+		h3 {
+			font-size: 18px;
+			text-align: center;
+			color: #000;
+			margin: 10px 0 0 0;
+		}
+		p {
+			line-height: 1.8em;
+		}
+		.logo {
+			height: 100px;
+			background-color: #111;
+			color:#fff;
+			text-align: center;
+			padding-top: 20px;
+		}
+		.cart {
+			background-color: #fff;
+			text-align: center;
+		}
+		.btn-cart {
+			text-align: center;
+			width: auto;
+			height: 30px;
+			color: black;
+			padding: 0 10px;
+			margin-top: 5px;
+			border: 1px solid #000;
+			border-radius: 5px;
+		}
+
+		.btn-cart-50 {
+			width: 50px;
+		}
+
+
+		.invisible {
+			visibility: invisible;
+			display: none;
+		}
+		.search-form {
+			background-color: lightgreen;
+		}
+		.cart-block {
+			background-color: lightgray;
+			text-align: center;
+		}
+		.products {
+			text-align: center;
+		}
+		.products-row,
+		.cart-item-row {
+			display: flex;
+			flex-direction: row;
+			justify-content: left;
+			text-align: center;
+		}
+		.product-item,
+		.product-bio {
+			display: block;
+			width: 220px;
+			border: 1px solid #000;
+			margin-left: 10px;
+			padding: 10px;
+			background-color: #fff;
+		}
+		.product-desc {
+			text-align: center;
+			padding-left: 10px;
+		}
+		.right-block-row {
+			display: flex;
+			flex-direction: column;
+		}
+		.white {
+			color: #fff;
+		}
+		.left {
+			text-align: left;
+		}
+		.bold {
+			font-weight: bold;
+		}
+
+		.press_btn:hover {
+			cursor: pointer;
+			box-shadow: inset 0 0 10px 1px gray;
+		}
+		.press_btn:active {
+			cursor: pointer;
+			box-shadow:  0 0 10px 5px gray;
+			font-size: 16px;
+			font-weight: bold;
+		}
+		.width-300 {
+			width:250px;
+		}
+
+		footer {
+			margin-top: 30px;
+			text-align: center;
+		}
+
+		.social-icon ul {
+				list-style-type: none;
+			}
+		.fa {
+			padding-left: 0px;
+		}
+
+		.social-icon ul li {
+			display: inline-block;
+		}
+
+		.social-icon ul li a {
+			margin-right: 5px;
+			width: 37px;
+			height: 37px;
+			border: 1px solid #ddd;
+			display: block;
+			border-radius: 50%;
+			transition: all 0.5s ease-out;
+		}
+
+		.social-icon ul {
+			margin: 0;
+			padding: 0;
+			display: flex;
+			justify-content: center;
+		}
+
+		.social-icon ul li{
+			position: relative;
+		}
+
+		.social-icon ul li a:hover {
+			background-color: #000;
+			border: 1px solid #000;
+		}
+
+		.social-icon ul li a i:hover,
+		.social-icon ul li a:hover i {
+			color: #fff;
+		}
+
+		.social-icon ul li a i {
+			line-height: 37px;
+			color: #081e0e;
+			font-size: 20px;
+		}
+		.social-icon ul li:last-child::before{
+			content: 'GB';
+			position: absolute;
+			left: 20%;
+			top: 32%;
+		}
+		.social-icon ul li:last-child:hover::before{
+			color: #fff;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="container">
+			<div id="app">
+				<header>
+					<h1 class="logo">Интернет-магазин</h1>
+						<!*-- ПОИСК ----------------------------------------->
+					<div class="cart">
+						<form action="#" class="search-form">
+							<input type="text" class="search-field" v-model="searchLine" v-on:click="cleanText">
+							<button class="btn-search" type="submit" @click="FilterGoods">
+								<i class="fas fa-search">Поиск</i>
+							</button>
+							<br>
+							<h1 class="">Значение строки поиска: / {{ searchLine }} /</h1>
+						</form>
+						<!*-- КОРЗИНА ----------------------------------------->
+						<br>
+						<br>
+						<button type="button" class="btn-cart press_btn width-300" @click="isVisibleCart = !isVisibleCart">Корзина</button>
+						<div class="">
+							<span>Случайное число от 1 до 100:</span>
+							<button type="button" class="btn-cart press_btn btn-cart-50" @click="showBtnNum">{{ btnNum }}</button>
+						</div>
+						<br>
+						<br>
+						<div class="cart-block" v-if="isVisibleCart">
+							<h1>Корзина</h1>
+							<div class="cart-item">
+								<div class="cart-item-row">
+									<div class="product-bio" v-for="item of basketItems" :key="item.id_product">
+										<div class="product-desc">
+											<img :src="imgCatalog" alt="Some img">
+											<p class="product-title">Наименование товара: {{ item.product_name.toUpperCase() }}</p>
+											<p class="product-quantity">Количество:
+												<button class="press_btn" @click="item.quantity++">+</button>
+												<span>{{ item.quantity }}</span>
+												<button class="press_btn" @click="item.quantity--">-</button>
+												шт.
+											</p>
+											<p class="product-single-price"> {{ item.price }} руб. за ед.</p>
+											<p class="product-price">Стоимость выбранного товара: {{ item.price * item.quantity }} руб.</p>
+										</div>
+										<p><button class="del-btn press_btn" data-id="${this.id_product}">x</button></p>
+									</div>
+								</div>
+								<div class="right-block-row">
+									<div class="right-block">
+										<h2 class="product-price left">Стоимость выбранных позиций товаров:  руб. </h2>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</header>
+				<main>
+					<!*-- КАТАЛОГ ----------------------------------------->
+					<div class="products">
+						<h1>Каталог товаров</h1>
+						<div class="products-row">
+							<div class="product-item" v-for="(item, index) of products" :key="item.id_product">
+								<!-- Необходимо для спиcка в массиве for также указывать ключ - это уникальное значение для правильного отображения списков. когда их много. Если будет задвоение key, то выведется ошибка задвоения-->
+								<h2>{{ item.product_name.toUpperCase() }}</h2><!-- Название -->
+								<img :src="imgCatalog" alt="Some img">
+								<div class="desc">
+									<p>Товара в наличии: {{ item.quantity }} шт.</p><!-- Количество -->
+									<p>Цена за единицу: {{ item.price }} pуб.</p><!-- Цена -->
+									<p><button class="buy-btn press_btn" @click="addProduct">ADD GOODS TO BASKET</button></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</main>
+				<hr>
+				<footer>
+					<div class="social-icon">
+						<ul>
+							<li v-for="(item, key) in social_links">
+								<a :href="item" target="_blank">
+									<i class="fa" :class="key"></i>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</footer>
+			</div>
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</body>
+</html>

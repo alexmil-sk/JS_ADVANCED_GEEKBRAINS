@@ -8,7 +8,7 @@
 	<script defer src="../js/script_5.js"></script>
 	<!-- Подключение jQuery -->
 	<script defer src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<title>Домашнее задание №5</title>
+	<title>Домашнее задание №6</title>
 	<link rel="stylesheet" href="../css/style.css">
 	<style>
 		h1 {
@@ -221,53 +221,66 @@
 	<div class="wrapper">
 		<div class="container">
 			<a href="../index.html" class="btn-home"><img src="../img/home.svg" alt=""></a>
-			<h1 class="h1-HW">Домашнее задание №5</h1>
+			<h1 class="h1-HW">Домашнее задание №6</h1>
 			<section сlass="section-HW">
 				<article class="article-HW">
-					<p>1. Добавить методы и обработчики событий для поля поиска. Создать в объекте данных поле searchLine и привязать к нему содержимое поля ввода.<br>
-						На кнопку «Искать» добавить обработчик клика, вызывающий метод FilterGoods.</p>
-					<p>2. Добавить корзину.<br>
-						В html-шаблон добавить разметку корзины.<br>
-						Добавить в объект данных поле isVisibleCart, управляющее видимостью корзины.</p>
-					<p>3.* Добавлять в .goods-list заглушку с текстом «Нет данных» в случае, если список товаров пуст.</p>
+					<p>1. Вынести поиск в отдельный компонент.</p>
+					<p>2. Вынести корзину в отдельный компонент.</p>
+					<p>3.* Создать компонент с сообщением об ошибке. Компонент должен отображаться, когда не удаётся выполнить запрос к серверу.</p>
 				</article>
 			</section>
 			<h1 class="h1-HW">Решение</h1>
 			
 			<!-- ! ЗАДАЧА №1 -->
 			<article class="article-HW">
-				<p class="bold">1. Добавить методы и обработчики событий для поля поиска. Создать в объекте данных поле searchLine и привязать к нему содержимое поля ввода.<br>
-				На кнопку «Искать» добавить обработчик клика, вызывающий метод FilterGoods.</p>
+				<p class="bold">1. Вынести поиск в отдельный компонент.</p>
 				<p>Пояснения:</p>
-				<p></p>
-				<button id="answerBtn" type="button" onclick="window.location.href='../source/basket_HW-5/Cart_Vue.html'"
-					class="answerBtn">КОРЗИНА</button>
-				<br>
-				<br>
+				<p>Вынести всю разметку, связанную с компонентом поиска, в отдельный компонент. Там будет обработка сабмита или клика и надо внутри когда что-то хотим найти по кнопке или инициируем сабмит происходит механизм либо root либо parent в совокуие с рефс и достукиваемся до компонента каталога и вызываем метод фильтрации передавая туда значение строки которую вы набрали в компоненте поиска</p>
+				<p>1. Выносим разметку 2. описываем события подключаем и вызываем правильно компонент</p>
 			</article>
 			<!-- ! ЗАДАЧА №2 -->
 			<article class="article-HW">
-				<p class="bold">2. Добавить корзину.<br>
-					В html-шаблон добавить разметку корзины.<br>
-					Добавить в объект данных поле isVisibleCart, управляющее видимостью корзины.</p>
+				<p class="bold">2. Вынести корзину в отдельный компонент.</p>
 				<p>Пояснения:</p>
 				<p></p>
-				<button id="answerBtn" type="button" onclick="window.location.href='../source/basket_HW-5/Cart_Vue.html'"
-					class="answerBtn">КОРЗИНА</button>
-				<br>
-				<br>
 			</article>
 			<!-- ! ЗАДАЧА №3 -->
 			<article class="article-HW">
-				<p class="bold">3.* Добавлять в .goods-list заглушку с текстом «Нет данных» в случае, если список товаров пуст.</p>
+				<p class="bold">3.* Создать компонент с сообщением об ошибке. Компонент должен отображаться, когда не удаётся выполнить запрос к
+				серверу.</p>
 				<p>Пояснения:</p>
-				<p></p>
-				<button id="answerBtn" type="button" onclick="window.location.href='../source/basket_HW-5/Cart_Vue.html'"
-					class="answerBtn">КОРЗИНА</button>
-				<br>
-				<br>
+				<p>Активировать компонент сообщения об ошибке именно в блоке перехвата ошибки метода getJsonю. как только сработает catch сразу сработает триггер на отображение ошибки. Отображается кнопка закрыть и закрываем. responseText</p>
 			</article>
+
+			<!-- todo------------------------------------ -->
+			<div id="app">
+				
+
+				<div>
+					<button v-for="tab in tabs" :key="tab" @click="currentTab = tab">{{ tab }}</button>
+				</div>
+				<component :is="currentComponent"></component>
+
+				<!-- 
+				<some-el :title="title" :counter="counter" :increase="increase" @increase-counter="increase" @click="increase"></some-el>
+
+				<div>Вставка в виде слота</div>
+					-->
+
+				<!-- 
+				<some-el :title="title" :counter="counter" :increase="increase" @increase-counter="increase"></some-el>
+				<some-el :title="title" :counter="counter" :increase="increase" @increase-counter="increase"></some-el>-->
+
+			</div>
+
+
+
+			<!-- todo------------------------------------ -->
+
 		</div>
 	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+	<script src="../js/script_6/components.js"></script>
+	<script src="../js/script_6/script_6.js"></script>
 </body>
 </html>
