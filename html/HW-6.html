@@ -230,15 +230,14 @@
 				</article>
 			</section>
 			<h1 class="h1-HW">Решение</h1>
-			
 			<!-- ! ЗАДАЧА №1 -->
 			<article class="article-HW">
 				<p class="bold">1. Вынести поиск в отдельный компонент.</p>
 				<p>Пояснения:</p>
-				<p>Вынести всю разметку, связанную с компонентом поиска, в отдельный компонент. Там будет обработка сабмита или клика и надо внутри когда что-то хотим найти по кнопке или инициируем сабмит происходит механизм либо root либо parent в совокуие с рефс и достукиваемся до компонента каталога и вызываем метод фильтрации передавая туда значение строки которую вы набрали в компоненте поиска</p>
-				<p>1. Выносим разметку 2. описываем события подключаем и вызываем правильно компонент</p>
-				<button id="answerBtn" type="button" onclick="window.location.href='../source/basket_HW-6/Cart_Vue_6.html'"
-					class="answerBtn">КОРЗИНА</button>
+				<button id="answerBtn" type="button" onclick="window.location.href='../source/basket_HW-6_v.1/Cart_Vue_6.html'"
+					class="answerBtn">Каталог v.1</button>
+				<button id="answerBtn" type="button" onclick="window.location.href='../source/basket_HW-6_v.2/Cart_Vue_6.html'"
+						class="answerBtn">Каталог v.2</button>
 				<br>
 				<br>
 			</article>
@@ -247,8 +246,10 @@
 				<p class="bold">2. Вынести корзину в отдельный компонент.</p>
 				<p>Пояснения:</p>
 				<p></p>
-				<button id="answerBtn" type="button" onclick="window.location.href='../source/basket_HW-6/Cart_Vue_6.html'"
-					class="answerBtn">КОРЗИНА</button>
+				<button id="answerBtn" type="button" onclick="window.location.href='../source/basket_HW-6_v.1/Cart_Vue_6.html'"
+					class="answerBtn">Корзина v.1</button>
+				<button id="answerBtn" type="button" onclick="window.location.href='../source/basket_HW-6_v.2/Cart_Vue_6.html'"
+					class="answerBtn">Корзина v.2</button>
 				<br>
 				<br>
 			</article>
@@ -257,38 +258,9 @@
 				<p class="bold">3.* Создать компонент с сообщением об ошибке. Компонент должен отображаться, когда не удаётся выполнить запрос к
 				серверу.</p>
 				<p>Пояснения:</p>
-				<p>Активировать компонент сообщения об ошибке именно в блоке перехвата ошибки метода getJson. как только сработает catch сразу сработает триггер на отображение ошибки. Отображается кнопка закрыть и закрываем. responseText</p>
-				<button id="answerBtn" type="button" onclick="window.location.href='../source/basket_HW-6/Cart_Vue_6.html'"
-					class="answerBtn">КОРЗИНА</button>
 				<br>
 				<br>
 			</article>
-
-			<!-- todo------------------------------------ -->
-			<div id="app">
-				
-
-				<div>
-					<button v-for="tab in tabs" :key="tab" @click="currentTab = tab">{{ tab }}</button>
-				</div>
-				<component :is="currentComponent"></component>
-
-				<!-- 
-				<some-el :title="title" :counter="counter" :increase="increase" @increase-counter="increase" @click="increase"></some-el>
-
-				<div>Вставка в виде слота</div>
-					-->
-
-				<!-- 
-				<some-el :title="title" :counter="counter" :increase="increase" @increase-counter="increase"></some-el>
-				<some-el :title="title" :counter="counter" :increase="increase" @increase-counter="increase"></some-el>-->
-
-			</div>
-
-
-
-			<!-- todo------------------------------------ -->
-
 		</div>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
