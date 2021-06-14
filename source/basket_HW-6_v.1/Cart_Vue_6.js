@@ -13,37 +13,28 @@ const app = new Vue({
 			'fa-GB': 'https://gb.ru',
 
 		},
+
 		btnNum: 0,
 		catalogUrl: "/catalogData.json",
 		imgCatalog: "../../img/HW-3/LeBoard-sm.jpg",
-		basketItems: [
-			{
-				"id_product": 123,
-				"product_name": "Ноутбук",
-				"price": 45600,
-				"quantity": 2,
-			}, {
-				"id_product": 456,
-				"product_name": "Мышка",
-				"price": 1000,
-				"quantity": 2,
-			}
-		],
+		basketItems: [],
+		//products = [],
 		products: [{
 			"id_product": 123,
 			"product_name": "Ноутбук",
 			"price": 45600,
-			"quantity": 2,
+			"quantity": 1,
 		},
 		{
 			"id_product": 456,
 			"product_name": "Мышка",
 			"price": 1000,
-			"quantity": 2,
+			"quantity": 1,
 		}
 		],
-		isVisibleCart: true,
-		searchLine: 'строка searchLine',
+		filtered: [],
+		isVisibleCart: false,
+		searchLine: '',
 	},
 	methods: {
 		cleanText() {
@@ -56,24 +47,52 @@ const app = new Vue({
 					console.log(error);
 				});
 		},
-		addProduct(products) {
-			console.log(`Добавлено в корзину: ${this.products[0].product_name}`);
-			
+		addProduct(item) {
+			this.getJson(`${API}/addToBasket.json`)
+				.then(data => {
+					console.log(data);//Приходит result
+					if (data.result === 1) {
+						let find = this.basketItems.find(el => el.id_product === item.id_product);
+						if (find) {
+							find.quantity++;
+						} else {
+							let prod = Object.assign({ quantity: 1 }, item);
+							this.basketItems.push(prod);
+						}
+					} else {
+						alert('Error');
+					}
+			});			
 		},
 
-		showBtnNum() {
-			this.btnNum = Math.floor((Math.random() * 100) + 1);
+		remove(item) {
+			this.getJson(`${API}/deleteFromBasket.json`)
+				.then(data => {
+					console.log(data); //Приходит result
+					if (data.result === 1) {
+						if (item.quantity > 1) {
+							item.quantity--;
+						} else {
+							this.basketItems.splice(this.basketItems.indexOf(item), 1);
+						}
+					}
+				});
 		},
 
-		FilterGoods() {
-			console.log('FilterGoods');
+		filter() {
+			let regexp = new RegExp(this.searchLine, 'i');
+			this.filtered = this.basketItems.filter(el => regexp.test(el.product_name));
+			console.log(this.searchLine);
+			console.log(regexp);
+			console.log(this.basketItems);
+			console.log(this.filtered);
 		},
 
 		beforeCreate() { //Хук Жизненного цикла-1. Cрабатывает перед созданием приложения
 		},
 
 		created() { //Хук Жизненного цикла-2. Срабатывает когда приложение создано и перед тем, как начало монтироваться
-			this.getJson(`${API + this.catalogUrl}`)
+			this.getJson(`${API}/catalogData.json`)
 				.then((data) => {
 					console.log(data);
 					this.products = data;
@@ -105,7 +124,7 @@ const app = new Vue({
 		destroyed() {} //Хук Жизненного цикла-8.Выполняется после того, как уничтожится текущее приложение или компонент
 	},
 	computed: { //БЛОК ВЫЧИСЛЯЕМЫХ ЗНАЧЕНИЙ. ВНИМАНИЕ!!! В них нельзя передавать параметры в скобках
-		
+
 	}
 })
 

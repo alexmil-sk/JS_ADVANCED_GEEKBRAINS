@@ -187,13 +187,13 @@
 		<div class="container">
 			<div id="app">
 				<header>
-					<a href="../../html/HW-5.html #answerBtn" class="btn-home"><img src="../../img/home.svg" alt="home"></a>
+					<a href="../../html/HW-6.html" id="answerBtn" class="btn-home"><img src="../../img/home.svg" alt="home"></a>
 					<h1 class="logo">Интернет-магазин</h1>
 						<!*-- ПОИСК ----------------------------------------->
 					<div class="cart">
-						<form action="#" class="search-form">
+						<form action="#" class="search-form" @submit.prevent="filter">
 							<input type="text" class="search-field" v-model="searchLine" v-on:click="cleanText">
-							<button class="btn-search" type="submit" @click="FilterGoods">
+							<button class="btn-search" type="submit" @click="filter">
 								<i class="fas">Поиск</i>
 							</button>
 							<br>
@@ -209,8 +209,9 @@
 						</div>
 						<br>
 						<br>
-						<div class="cart-block" v-if="isVisibleCart">
+						<div class="cart-block" v-show="isVisibleCart">
 							<h1>Корзина</h1>
+							<p v-if="!basketItems.length">В КОРЗИНЕ ТОВАР ОТСУТСТВУЕТ</p>
 							<div class="cart-item">
 								<div class="cart-item-row">
 									<div class="product-bio" v-for="item of basketItems" :key="item.id_product">
@@ -226,7 +227,7 @@
 											<p class="product-single-price"> {{ item.price }} руб. за ед.</p>
 											<p class="product-price">Стоимость выбранного товара: {{ item.price * item.quantity }} руб.</p>
 										</div>
-										<p><button class="del-btn press_btn" data-id="${this.id_product}">x</button></p>
+										<p><button class="del-btn press_btn" data-id="${this.id_product}" @click="remove(item)">Х</button></p>
 									</div>
 								</div>
 								<div class="right-block-row">
@@ -243,14 +244,14 @@
 					<div class="products">
 						<h1>Каталог товаров</h1>
 						<div class="products-row">
-							<div class="product-item" v-for="(item, index) of products" :key="item.id_product">
+							<div class="product-item" v-for="item of products" :key="item.id_product">
 								<!-- Необходимо для спиcка в массиве for также указывать ключ - это уникальное значение для правильного отображения списков. когда их много. Если будет задвоение key, то выведется ошибка задвоения-->
 								<h2>{{ item.product_name.toUpperCase() }}</h2><!-- Название -->
 								<img :src="imgCatalog" alt="Some img">
 								<div class="desc">
 									<p>Товара в наличии: {{ item.quantity }} шт.</p><!-- Количество -->
 									<p>Цена за единицу: {{ item.price }} pуб.</p><!-- Цена -->
-									<p><button class="buy-btn press_btn" @click="addProduct">ADD GOODS TO BASKET</button></p>
+									<p><button class="buy-btn press_btn" @click="addProduct(item)">ADD GOODS TO BASKET</button></p>
 								</div>
 							</div>
 						</div>
@@ -271,7 +272,9 @@
 			</div>
 		</div>
 	</div>
-	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-	<script src="Cart_Vue.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="BasketComp.js"></script>
+	<script src="CatalogComp.js"></script>
+	<script src="Cart_Vue_6.js"></script>
 </body>
 </html>
