@@ -236,32 +236,32 @@
 			<article class="article-HW">
 				<p class="bold">1. Привязать добавление товара в корзину к реальному API.</p>
 				<p>Пояснения:</p>
-				
-				<button id="answerBtn" type="button" onclick="window.location.href='../source/basket_HW-6/Cart_Vue_6.html'"
-					class="answerBtn">КОРЗИНА</button>
-				<br>
-				<br>
+				<p>Файлы с кодом находятся в папках корневого каталога: <br>
+				- "source/project_express_single+DEL/public/js/CartComp.js"<br>
+				- "source/project_express_single+DEL/server/server.js"</p>
 			</article>
 			<!-- ! ЗАДАЧА №2 -->
 			<article class="article-HW">
 				<p class="bold">2. Добавить API для удаления товара из корзины.</p>
 				<p>Пояснения:</p>
-				<p></p>
-				<button id="answerBtn" type="button" onclick="window.location.href='../source/basket_HW-6/Cart_Vue_6.html'"
-					class="answerBtn">КОРЗИНА</button>
-				<br>
-				<br>
+				<p><strong>Порт был изменен на "localhost:3333".</strong></p>
+				<p>При создании метода "app.delete" были выполнены следующие изменения кода:</p>
+				<p><strong>В файле "server.js":</strong><br>
+				1. Создаем копию метода "app.put" с изменением метода на "app.delete".<br>
+				2. В методе "app.delete" вместо строки "find.quantity += req.body.quantity;" вписываем строку "find.el += req.el;".</p>
+				<p><strong>В файле "CartComp.js":</strong><br>
+				1. Изменяем в методе "remove(item)" строку:<br>
+				- старая: this.$parent.getJson(`${API}/deleteFromBasket.json`)<br>
+				- новая: this.$parent.deleteJson(`/api/cart/${item.id_product}`)<br>
+				2. Удаляем в методе "remove(item)" строку <br>
+				- if(data.result === 1)</p>
 			</article>
 			<!-- ! ЗАДАЧА №3 -->
 			<article class="article-HW">
 				<p class="bold">3.* Добавить файл stats.json, в котором будет храниться статистика действий пользователя с корзиной. В файле должны быть
 				поля с названием действия (добавлено/удалено), названием товара, с которым производилось действие и временем, когда оно
 				было совершено.</p>
-				<p>Пояснения:</p>
-				<button id="answerBtn" type="button" onclick="window.location.href='../source/basket_HW-6/Cart_Vue_6.html'"
-					class="answerBtn">КОРЗИНА</button>
-				<br>
-				<br>
+				
 			</article>
 		</div>
 	</div>
