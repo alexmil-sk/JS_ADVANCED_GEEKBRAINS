@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Подключение файла JS скриптов -->
+	<script defer src="../js/script_5.js"></script>
+	<!-- Подключение jQuery -->
+	<script defer src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<title>Домашнее задание №8</title>
+	<link rel="stylesheet" href="../css/style.css">
+	<style>
+		h1 {
+			font-size: 26px;
+			text-align: center;
+			color: #000;
+		}
+		h2 {
+			font-size: 18px;
+			text-align: left;
+			color: #000;
+		}
+		h3 {
+			font-size: 18px;
+			text-align: center;
+			color: #000;
+			margin: 10px 0 0 0;
+		}
+		.left {
+			text-align: left;
+			margin-top: 30px;
+			margin-bottom: 10px
+		}
+		.boldBlack {
+			color:#000;
+			font-weight: 700;
+			margin-top: 10px;
+			margin-bottom: 20px
+		}
+		.center {
+			text-align: center;
+		}
+		.basket_goods,
+		.products {
+			display: flex;
+			justify-content: right;
+			width: 100%;
+			min-height: 375px;
+			border: 3px solid black;
+			padding: 10px;
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+		.basket_goods{
+			min-height: 376px;
+		}
+		.flex {
+			display: flex;
+			justify-content: space-around;
+		}
+
+		.p1, .p2 {
+			width: 40%;
+		}
+
+		.p1 h2, .p2 h2 {
+			text-align: center;
+			font-weight: bold;
+		}
+		.p1_result,
+		.p2_result,
+		.p3_result,
+		.p4_result {
+			width: 100%;
+			min-height: 350px;
+			justify-self: center;
+			border: 2px solid gray;
+			margin-left: 10px;
+			text-align: left;
+			padding-left: 10px;
+			background-color: #FFFACD;
+		}
+		.product-item {
+			width: 50%;
+			min-height: 350px;
+			justify-self: center;
+			border: 2px solid gray;
+			margin-left: 10px;
+			text-align: center;
+			background-color: #FFFACD;
+		}
+		.product-item img{
+			width: 180px;
+			opacity: 0.8;
+			
+		}
+		.product-item:first-child {
+			margin-left: 0px;
+		}
+		.flex__row {
+			display: flex;
+			flex-direction: column;
+		}
+		.flex__row img {
+			height: 200px;
+			margin: 20px;
+			border: 1px solid gray;
+		}
+		.blind {
+			transform: scale(1.0);
+			margin-top: 50px !important;
+		}
+		.buy_btn__del,
+		.buy-btn {
+			width: auto;
+			height: 30px;
+			color: black;
+			padding: 0 10px;
+			margin-top: 5px;
+			border: 1px solid #000;
+			border-radius: 5px;
+		}
+		.buy-btn {
+			background-color: lightgreen;
+		}
+
+		.buy-btn:hover {
+			background-color: green;
+			color: #fff;
+		}
+
+		.buy-btn:active {
+			color: yellow;
+			box-shadow: 0px 0px 10px 5px yellow;
+		}
+
+		.buy_btn__del {
+			background-color: lightcoral;
+		}
+
+		.buy_btn__del:hover {
+			background-color: red;
+			color: #fff;
+		}
+
+		.buy_btn__del:active {
+			color: yellow;
+			box-shadow: 0px 0px 10px 5px yellow;
+		}
+
+
+		.total {
+			font-size: 30px;
+			font-weight: 700;
+			color: #000;
+			margin-bottom: 40px;
+		}
+		.basketDiv {
+			margin-bottom: 30px;
+		}
+		.product-item h1 {
+			padding-left: 30px;
+		}
+		.product-item p{
+			font-size: 25px;
+			padding-left: 30px;
+		}
+		
+		.basket {
+			width: 100%;
+			height: 350px;
+			margin-bottom: 20px;
+			background-color: lightgray;
+			margin: 50px auto;
+			/*border: 1px solid #ccc;*/
+		}
+		span {
+			font-size: 25px;
+			text-align: left;
+			line-height: 2em;
+			margin-left:30px;
+			border-top: 1px solid #000;
+			font-weight: bold;
+		}
+		.buyBtn {
+			content: '';
+			width: 100px;
+			height: 40px;
+			font-size: 20px;
+			color: #000;
+			cursor: pointer;
+			border-radius: 10px;
+			background-color: lightgreen;
+			position:absolute;
+			right: 20px;
+			bottom: 20px;
+		}
+		.hide {
+			display: none;
+		}
+		.reds {
+			color: red;
+		}
+
+		.red {
+			background-color: red;
+		}
+
+		.blue {
+			background-color: blue;
+		}
+
+		input {
+			border: 1px solid #000;
+		}
+		</style>
+
+</head>
+<body>
+	<div class="wrapper">
+		<div class="container">
+			<a href="../index.html" class="btn-home"><img src="../img/home.svg" alt=""></a>
+			<h1 class="h1-HW">Домашнее задание №8</h1>
+			<section сlass="section-HW">
+				<article class="article-HW">
+					<p>1. Вынести компоненты интернет-магазина в отдельные модули и настроить сборку.</p>
+					<p>2. Найти в официальной документации способ автоматически перезапускать webpack при изменении файла. Изменить скрипт build,
+					добавив туда этот способ. Подсказка: при запуске нужно использовать определённый флаг.</p>
+					<p>3.* Написать приложение-калькулятор, используя подход BDD. Приложение должно состоять из четырёх методов для сложения,
+					вычитания, умножения и деления. Каждый метод принимает на вход два аргумента и выполняет действие. При написании тестов
+					учесть случаи, когда на вход подаются не числа, а строки, null или undefined.</p>
+				</article>
+			</section>
+			<h1 class="h1-HW">Решение</h1>
+			
+			<!-- ! ЗАДАЧА №1 -->
+			<article class="article-HW">
+				<p class="bold">1. Вынести компоненты интернет-магазина в отдельные модули и настроить сборку.</p>
+				<p>Пояснения:</p>
+				
+			</article>
+			<!-- ! ЗАДАЧА №2 -->
+			<article class="article-HW">
+				<p class="bold">2. Найти в официальной документации способ автоматически перезапускать webpack при изменении файла. Изменить скрипт build,
+				добавив туда этот способ. Подсказка: при запуске нужно использовать определённый флаг.</p>
+				<p>Пояснения:</p>
+			</article>
+			<!-- ! ЗАДАЧА №3 -->
+			<article class="article-HW">
+				<p class="bold">3.* Написать приложение-калькулятор, используя подход BDD. Приложение должно состоять из четырёх методов для сложения,
+				вычитания, умножения и деления. Каждый метод принимает на вход два аргумента и выполняет действие. При написании тестов
+				учесть случаи, когда на вход подаются не числа, а строки, null или undefined.</p>
+				
+			</article>
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+	<script src="../js/script_6/components.js"></script>
+	<script src="../js/script_6/script_6.js"></script>
+</body>
+</html>
